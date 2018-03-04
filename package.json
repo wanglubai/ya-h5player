@@ -1,0 +1,24 @@
+{
+  "name": "ya-h5player",
+  "version": "1.0.0",
+  "description": "html5 player live flv",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanglubai/ya-h5player.git"
+  },
+  "author": "wanglubai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wanglubai/ya-h5player/issues"
+  },
+  "homepage": "https://github.com/wanglubai/ya-h5player#readme",
+  "devDependencies": {
+    "css-loader": "^0.28.10",
+    "style-loader": "^0.20.2",
+    "webpack": "^4.1.0"
+  }
+}
