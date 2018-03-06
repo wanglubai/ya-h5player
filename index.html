@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="./h5player.js"></script>
+</head>
+
+<body style="background-color: white">
+  <video id="videoElement"></video>
+  <script>
+    $.ajax({
+      dataType: 'jsonp',
+      cache: true,
+      jsonpCallback: "success_jsonpCallback",
+      url: "http://livestream.plu.cn/live/getlivePlayurl?roomId=531250",
+      success: function (data) {
+        if (H5Player.isSupported()) {
+          var videoElement = document.getElementById('videoElement');
+          var flvPlayer = H5Player.createPlayer({
+            type: 'flv',
+            url: 'http://aldirect.flv.huya.com/huyalive/94525224-2655537474-11405446604132450304-2704233350-10057-A-1519955611-1.flv?wsSecret=a6d853615179868afc79e959cda3687d&wsTime=5a9e3cef&uuid=2257591638'
+          });
+          flvPlayer.attachMediaElement(videoElement);
+          flvPlayer.load();
+          flvPlayer.play();
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
