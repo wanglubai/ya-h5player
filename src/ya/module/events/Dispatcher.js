@@ -27,10 +27,8 @@ class Dispatcher extends Base {
     } else if (typeof param == "object") {
       type = param["type"];
     }
-    debugger
     if (this._events.hasOwnProperty(type)) {
       var list = this._events[type];
-      debugger
       for (var i in list) {
         list[i](param);
       }
