@@ -12,9 +12,7 @@ class VideoController extends BaseController {
     super();
     this._video = null;
     Dispatcher.addEventListener(EventType.InnerInit, this.eventFun);
-    
   }
-  flashCallFun() {}
   eventFun(e) {
     if (e.type == EventType.InnerInit) {
       this._video = new FlashVideo();

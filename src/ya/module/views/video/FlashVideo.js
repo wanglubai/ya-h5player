@@ -24,14 +24,13 @@ class FlashVideo extends BaseVideo {
   }
   flashCall(arr) {
     if (arr[0] == "flashInit") {
-      this.display[0].flashCall(
-        "url",
+      this.url(
         "http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483"
       );
     }
   }
   url(url) {
-    this.display._attr("src", url);
+    this.display[0].flashCall("url", url);
   }
 }
 export default FlashVideo;
