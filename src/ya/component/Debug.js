@@ -3,7 +3,7 @@ class Debug {
 
   }
   log() {
-    console.log(arguments);
+    // console.log(arguments);
   }
 }
 export default new Debug();

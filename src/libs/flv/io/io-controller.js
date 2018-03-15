@@ -41,7 +41,7 @@ import {RuntimeException, IllegalStateException, InvalidArgumentException} from 
 // Manage IO Loaders
 class IOController {
 
-    constructor(dataSource, config, extraData) {
+     constructor(dataSource, config, extraData) {
         this.TAG = 'IOController';
 
         this._config = config;

@@ -1,9 +1,44 @@
 .ya-player {
   width: 100%;
   height: 100%;
+  background-color: #999999;
+  position: relative;
 }
 
 .ya-video {
   width: 100%;
   height: 100%;
+}
+
+.ya-controlbar {
+  position: absolute;
+  background-color: #232323;
+  width: 100%;
+  height: 40px;
+  bottom: 0px;
+}
+
+.ya-video-layer,
+.ya-danmuku-layer,
+.ya-bar-layer,
+.ya-tips-layer,
+.ya-gift-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.ya-flash-video {
+  width: 100%;
+  height: 100%;
+
+}
+
+/*.ya-button {}*/
+
+.ya-play-btn-0 {
+  background-image: url(./button/play_first_normal.png);
+}
+
+.ya-play-btn-1 {
+  background-image: url(./button/play_first_normal.png);
 }
