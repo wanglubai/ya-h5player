@@ -1,8 +1,10 @@
 import BaseVideo from "./BaseVideo.js";
+import EventType from "../../../component/EventType.js";
+import LayerManager from "../../managers/LayerManager.js";
 class FlashVideo extends BaseVideo {
   constructor() {
     super();
-    this._initDisplay("flash-video", "embed");
+    this._initDisplay("embed", "flash-video");
     this._attr("quality", "higt");
     this._attr("bgcolor", "#000000");
     this._attr("allowscriptaccess", "always");
@@ -12,9 +14,10 @@ class FlashVideo extends BaseVideo {
     this._attr("pluginspage", "http://www.macromedia.com/go/getflashplayer");
     this._attr("wmode", "transparent");
     this._attr("src", "./Player.swf?call=flashCall&debug=1");
+    LayerManager.VideoLayer.append(this);
 
     var tempThis = this;
-    window["flashCall"] = function() {
+    window["flashCall"] = function () {
       var arr = [];
       for (var i = 0; i < arguments.length; i++) {
         arr.push(arguments[i]);
@@ -24,13 +27,13 @@ class FlashVideo extends BaseVideo {
   }
   flashCall(arr) {
     if (arr[0] == "flashInit") {
-      this.url(
-        "http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483"
-      );
+      this.resReady=true;
     }
   }
-  url(url) {
-    this.display[0].flashCall("url", url);
+  _dealVo(vo) {
+    if (vo.type == 'url') {
+      this.display[0].flashCall("url", vo.value);
+    }
   }
 }
 export default FlashVideo;

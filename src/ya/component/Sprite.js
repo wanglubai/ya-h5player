@@ -5,15 +5,16 @@ class Sprite extends EventDispatcher {
     this._claseeName = "Sprite";
     this._vo = null;
     this._display = null;
+    this._resReady = false;
+    this._cacheVo = [];
   }
-  init() {}
   initDisplay() {
     if (arguments.length == 0) {
-      this._display = $('<div class="ya-sprite"></div>');
+      this._initDisplay();
     } else if (arguments.length == 1) {
-      this._display = $('<div class="ya-sprite ' + 'ya-' + arguments[0] + '"></div>');
+      this._initDisplay(arguments[0]);
     } else if (arguments.length == 2) {
-      this._display = $('<' + arguments[1] + ' class="ya-sprite ' + 'ya-' + arguments[0] + '"></' + arguments[1] + '>');
+      this._initDisplay(arguments[0], arguments[1]);
     }
     return this;
   }
@@ -23,23 +24,28 @@ class Sprite extends EventDispatcher {
     } else if (arguments.length == 1) {
       this._display = $('<div class="ya-sprite ' + 'ya-' + arguments[0] + '"></div>');
     } else if (arguments.length == 2) {
-      this._display = $('<' + arguments[1] + ' class="ya-sprite ' + 'ya-' + arguments[0] + '"></' + arguments[1] + '>');
+      this._display = $('<' + arguments[0] + ' class="ya-sprite ' + 'ya-' + arguments[1] + '"></' + arguments[1] + '>');
     }
   }
-  _init() {}
   _addClass() {
     this._display.addClass(arguments);
   }
   _removeClass() {
     this._display.removeClass(arguments);
   }
+  _attr() {
+    this._display.attr(arguments[0], arguments[1]);
+  }
+  _getElById(id) {
+    return $("#" + id);
+  }
+  _addEvent() { }
+  _removeEvent() { }
+
   append() {
     for (var i = 0; i < arguments.length; i++) {
       this._display.append(arguments[i].display);
     }
-  }
-  _attr(){
-    this._display.attr(arguments[0],arguments[1]);
   }
   appendTo(p) {
     this._display.appendTo(p.display);
@@ -47,21 +53,39 @@ class Sprite extends EventDispatcher {
   appendToById(p) {
     this._display.appendTo($("#" + p));
   }
-  _getElById(id) {
-    return $("#" + id);
-  }
   show() {
     this._display.show();
   }
   hide() {
     this._display.hide();
   }
-  _addEvent() {}
-  _removeEvent() {}
-  resizeFresh() {}
+
+
+  setVo(vo) {
+    this._cacheVo.push(vo);
+    if (this._resReady) {
+      this.updateVo();
+    }
+  }
+  updateVo() {
+    while (this._cacheVo.length > 0) {
+      this._dealVo(this._cacheVo.shift());
+    }
+  }
+  _dealVo(vo) {
+  }
+
+  resizeFresh() { }
   destory() {
     this.removeEvent();
     super.destory();
+  }
+
+  set resReady(bl) {
+    if (bl) {
+      this._resReady = true;
+      this.updateVo();
+    }
   }
 
   get display() {

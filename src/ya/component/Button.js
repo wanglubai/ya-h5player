@@ -30,11 +30,5 @@ class Button extends Sprite {
     this._display.on('mouseenter', this._eventFun);
     this._display.on('mouseleave', this._eventFun);
   }
-  // set status() {
-
-  // }
-  // get status() {
-
-  // }
 }
 export default Button;

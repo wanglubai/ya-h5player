@@ -8,7 +8,6 @@ import EventType from "./ya/component/EventType";
 
 class Player extends Sprite {
   constructor(vo) {
-    debugger
     super();
     this._vo = vo;
     this._initDisplay("player");
@@ -20,5 +19,7 @@ class Player extends Sprite {
     Controller.init();
     Dispatcher.dispatchEvent(EventType.InnerInit);
   }
+  // setVo(type,url){
+  // }
 }
 window["Player"] = Player;
