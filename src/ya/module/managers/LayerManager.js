@@ -11,11 +11,11 @@ class LayerManager extends EventDispatcher {
     this.GiftLayer = null;
   }
   init(parent) {
-    this.VideoLayer = new Sprite().initDisplay("video-layer");
-    this.DanmakuLayer = new Sprite().initDisplay("danmuku-layer");
-    this.BarLayer = new Sprite().initDisplay("bar-layer");
-    this.TipsLayer = new Sprite().initDisplay("tips-layer");
-    this.GiftLayer = new Sprite().initDisplay("gift-layer");
+    this.VideoLayer = new Sprite().initDivDisplay("video-layer");
+    this.DanmakuLayer = new Sprite().initDivDisplay("danmuku-layer");
+    this.BarLayer = new Sprite().initDivDisplay("bar-layer");
+    this.TipsLayer = new Sprite().initDivDisplay("tips-layer");
+    this.GiftLayer = new Sprite().initDivDisplay("gift-layer");
     parent.append(
       this.VideoLayer,
       this.DanmakuLayer,

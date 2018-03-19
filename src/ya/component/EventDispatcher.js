@@ -43,7 +43,9 @@ class EventDispatcher extends Base {
     }
   }
 
-  destroy() {}
+  destroy() {
+    super.destroy();
+  }
 }
 
 export default EventDispatcher;

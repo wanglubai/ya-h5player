@@ -10,7 +10,7 @@ class Player extends Sprite {
   constructor(vo) {
     super();
     this._vo = vo;
-    this._initDisplay("player");
+    this.initDivDisplay('player');
     this.appendToById(this._vo["container"]);
     this.init();
   }
@@ -19,7 +19,5 @@ class Player extends Sprite {
     Controller.init();
     Dispatcher.dispatchEvent(EventType.InnerInit);
   }
-  // setVo(type,url){
-  // }
 }
 window["Player"] = Player;

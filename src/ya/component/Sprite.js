@@ -5,43 +5,51 @@ class Sprite extends EventDispatcher {
     this._claseeName = "Sprite";
     this._vo = null;
     this._display = null;
+    this._cacheVos = [];
     this._resReady = false;
-    this._cacheVo = [];
   }
-  initDisplay() {
-    if (arguments.length == 0) {
-      this._initDisplay();
-    } else if (arguments.length == 1) {
-      this._initDisplay(arguments[0]);
-    } else if (arguments.length == 2) {
-      this._initDisplay(arguments[0], arguments[1]);
+
+  _updateVo() {
+    while (this._cacheVos.length > 0) {
+      this._dealVo_(this._cacheVos.shift());
     }
+  }
+
+  _dealVo_(vo) {}
+  _addEvent_() {}
+  _removeEvent_() {}
+
+  initHtmlDisplay(str) {
+    this._display = $(str);
     return this;
   }
-  _initDisplay() {
-    if (arguments.length == 0) {
-      this._display = $('<div class="ya-sprite"></div>');
-    } else if (arguments.length == 1) {
-      this._display = $('<div class="ya-sprite ' + 'ya-' + arguments[0] + '"></div>');
-    } else if (arguments.length == 2) {
-      this._display = $('<' + arguments[0] + ' class="ya-sprite ' + 'ya-' + arguments[1] + '"></' + arguments[1] + '>');
+  initDivDisplay(className) {
+    this._display = $('<div class="ya-' + className + '"></div>');
+    return this;
+  }
+  setCacheVo(vo) {
+    this._cacheVos.push(vo);
+    if (this._resReady) {
+      this._updateVo();
     }
   }
-  _addClass() {
-    this._display.addClass(arguments);
+
+  css() {
+    if (arguments.length == 1) {
+      return this._display.css(arguments[0]);
+    } else {
+      this._display.css(arguments[0], arguments[1]);
+    }
   }
-  _removeClass() {
-    this._display.removeClass(arguments);
-  }
-  _attr() {
+  attr() {
     this._display.attr(arguments[0], arguments[1]);
   }
-  _getElById(id) {
-    return $("#" + id);
+  addClass() {
+    this._display.addClass(arguments);
   }
-  _addEvent() { }
-  _removeEvent() { }
-
+  removeClass() {
+    this._display.removeClass(arguments);
+  }
   append() {
     for (var i = 0; i < arguments.length; i++) {
       this._display.append(arguments[i].display);
@@ -50,8 +58,8 @@ class Sprite extends EventDispatcher {
   appendTo(p) {
     this._display.appendTo(p.display);
   }
-  appendToById(p) {
-    this._display.appendTo($("#" + p));
+  appendToById(id) {
+    this._display.appendTo($("#" + id));
   }
   show() {
     this._display.show();
@@ -60,22 +68,7 @@ class Sprite extends EventDispatcher {
     this._display.hide();
   }
 
-
-  setVo(vo) {
-    this._cacheVo.push(vo);
-    if (this._resReady) {
-      this.updateVo();
-    }
-  }
-  updateVo() {
-    while (this._cacheVo.length > 0) {
-      this._dealVo(this._cacheVo.shift());
-    }
-  }
-  _dealVo(vo) {
-  }
-
-  resizeFresh() { }
+  resizeFresh() {}
   destory() {
     this.removeEvent();
     super.destory();
@@ -84,7 +77,7 @@ class Sprite extends EventDispatcher {
   set resReady(bl) {
     if (bl) {
       this._resReady = true;
-      this.updateVo();
+      this._updateVo();
     }
   }
 

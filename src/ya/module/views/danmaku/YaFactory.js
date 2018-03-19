@@ -1,4 +1,4 @@
-import YaDanmakuBase from './YaDanmakuBase';
+import YaDanmakuBase from "./YaDanmakuBase";
 
 function YaFactory() {
   var tempThis = this;
@@ -12,7 +12,7 @@ function YaFactory() {
     if (tempThis._pool.length > 0) {
       return tempThis._pool.pop();
     } else {
-      var item = new YaDanmakuBase()
+      var item = new YaDanmakuBase();
       return item;
     }
   }

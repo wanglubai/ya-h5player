@@ -5,19 +5,19 @@ import LayerManager from "../../managers/LayerManager";
 class FlvVideo extends BaseVideo {
   constructor() {
     super();
-    this._initDisplay("video", "h5-video");
+    this.initHtmlDisplay('<video class="ya-h5-video"></video>');
     LayerManager.VideoLayer.append(this);
-    this._resReady = true;
+    this.resReady = true;
   }
-  _dealVo(vo) {
-    if (vo['type'] == 'url') {
+  _dealVo_(vo) {
+    if (vo["type"] == "url") {
       this.playUrl(vo.value);
     }
   }
   playUrl(url) {
     if (this.flvPlayer == null) {
       this.flvPlayer = flvjs.createPlayer({
-        type: 'flv',
+        type: "flv",
         url: url
       });
       this.flvPlayer.attachMediaElement(this.display[0]);

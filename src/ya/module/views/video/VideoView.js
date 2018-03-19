@@ -8,14 +8,14 @@ class VideoView extends Base {
     super();
   }
   init() {
-    if (flvjs.isSupported()) {
+    if (flvjs.isSupported() == false) {
       this._video = new FlvVideo();
     } else {
       this._video = new FlashVideo();
     }
   }
   playUrl(url) {
-    this._video.setVo({ 'type': 'url', 'value': url });
+    this._video.setCacheVo({ type: "url", value: url });
   }
 }
 
