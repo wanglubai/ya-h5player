@@ -19,6 +19,10 @@ class Sprite extends EventDispatcher {
   _addEvent_() {}
   _removeEvent_() {}
 
+  initDisplay(display) {
+    this._display = display;
+    return this;
+  }
   initHtmlDisplay(str) {
     this._display = $(str);
     return this;
@@ -34,6 +38,10 @@ class Sprite extends EventDispatcher {
     }
   }
 
+  setVo(vo) {
+    this._vo=vo;
+    this._dealVo_(this._vo);
+  }
   css() {
     if (arguments.length == 1) {
       return this._display.css(arguments[0]);

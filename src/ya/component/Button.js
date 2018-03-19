@@ -1,34 +1,23 @@
-import Sprite from './Sprite.js';
+import Sprite from "./Sprite.js";
 
 class Button extends Sprite {
   constructor(vo) {
     super();
 
-    this._vo = vo;
-    this._instanceName = '';
-    this._status = '';
-    this._status = 0;
-
-    this._initDisplay();
-    this._init();
+    this.initDivDisplay("button");
   }
-  _init() {
-    this._addClass('button');
-    this._vo && this._vo.className ? this._addClass(this._vo.className) : '';
-    this._addClass('ya-button-' + this._instanceName + this._init);
+  _addEvent_() {
+    super._addEvent_();
+    this.display.on("click", this._eventFun);
+    this.display.on("mouseenter", this._eventFun);
+    this.display.on("mouseleave", this._eventFun);
   }
-  _addEvent() {
-    this._display.on('click', this._eventFun);
-    this._display.on('mouseenter', this._eventFun);
-    this._display.on('mouseleave', this._eventFun);
-  }
-  _eventFun() {
-
-  }
-  _removeEvent() {
-    this._display.on('click', this._eventFun);
-    this._display.on('mouseenter', this._eventFun);
-    this._display.on('mouseleave', this._eventFun);
+  _eventFun() {}
+  _removeEvent_() {
+    super._removeEvent_();
+    this.display.on("click", this._eventFun);
+    this.display.on("mouseenter", this._eventFun);
+    this.display.on("mouseleave", this._eventFun);
   }
 }
 export default Button;
