@@ -8,7 +8,7 @@ class VideoView extends Base {
     super();
   }
   init() {
-    if (flvjs.isSupported() == false) {
+    if (flvjs.isSupported()) {
       this._video = new FlvVideo();
     } else {
       this._video = new FlashVideo();

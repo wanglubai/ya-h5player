@@ -1,8 +1,9 @@
-import Sprite from "./Sprite.js";
+import Sprite from "../../../component/Sprite";
 
-class Button extends Sprite {
-  constructor(vo) {
+class ControlbarButton extends Sprite {
+  constructor() {
     super();
+    this._btnVo=null;
     this.initHtmlDisplay('<a class="ya-button"></a>');
   }
   _dealVo_(vo) {
@@ -19,4 +20,4 @@ class Button extends Sprite {
     this.display.on("click", this._eventFun);
   }
 }
-export default Button;
+export default ControlbarButton;

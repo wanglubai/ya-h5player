@@ -24,7 +24,6 @@ _rules.push({
     {
       loader: "file-loader",
       options: {
-        publicPath: "./output/"
       }
     }
   ]
@@ -42,13 +41,6 @@ var webpackConfig = {
     new Webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery"
-    }),
-    new UglifyJsPlugin({
-      // compress: {
-      //   global_defs: {
-      //     DEBUG: false
-      //   }
-      // }
     })
   ]
 };

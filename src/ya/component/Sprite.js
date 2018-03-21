@@ -39,7 +39,7 @@ class Sprite extends EventDispatcher {
   }
 
   setVo(vo) {
-    this._vo=vo;
+    this._vo = vo;
     this._dealVo_(this._vo);
   }
   css() {
@@ -53,7 +53,10 @@ class Sprite extends EventDispatcher {
     this._display.attr(arguments[0], arguments[1]);
   }
   addClass() {
-    this._display.addClass(arguments);
+    for (var i = 0; i < arguments.length; i++) {
+      debugger
+      this._display.addClass(arguments[i]);
+    }
   }
   removeClass() {
     this._display.removeClass(arguments);
