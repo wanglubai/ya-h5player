@@ -20,6 +20,7 @@ class FlvVideo extends BaseVideo {
   }
 
   _dealVo_(vo) {
+    if (this.destorystatus) return;
     if (vo["type"] == "url") {
       this.playUrl(vo.value);
     } else if (vo.type == "play") {

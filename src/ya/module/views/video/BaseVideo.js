@@ -4,7 +4,6 @@ class BaseVideo extends Sprite {
   constructor() {
     super();
   }
-
   play() {}
   pause() {}
 }

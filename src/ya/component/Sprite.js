@@ -10,13 +10,13 @@ class Sprite extends EventDispatcher {
   }
 
   _updateVo() {
+    if (this.destorystatus) return;
     while (this._cacheVos.length > 0) {
       this._dealVo_(this._cacheVos.shift());
     }
   }
 
   _dealVo_(vo) {}
- 
 
   initDisplay(display) {
     this._display = display;
@@ -31,6 +31,7 @@ class Sprite extends EventDispatcher {
     return this;
   }
   setCacheVo(vo) {
+    if (this.destorystatus) return;
     this._cacheVos.push(vo);
     if (this._resReady) {
       this._updateVo();
@@ -38,6 +39,7 @@ class Sprite extends EventDispatcher {
   }
 
   setVo(vo) {
+    if (this.destorystatus) return;
     this._vo = vo;
     this._dealVo_(this._vo);
   }

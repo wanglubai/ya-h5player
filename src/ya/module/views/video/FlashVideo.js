@@ -1,6 +1,7 @@
 import BaseVideo from "./BaseVideo.js";
 import EventType from "../../../component/EventType.js";
 import LayerManager from "../../managers/LayerManager.js";
+import VideoEvent from "./VideoEvent.js";
 class FlashVideo extends BaseVideo {
   constructor() {
     super();
@@ -23,10 +24,13 @@ class FlashVideo extends BaseVideo {
   flashCall(arr) {
     if (arr[0] == "flashInit") {
       this.resReady = true;
+    } else if (arr[0] == "playState") {
+      this.emit(VideoEvent.VideoPlayState);
     }
   }
 
   _dealVo_(vo) {
+    if(this.destorystatus)return;
     if (vo.type == "url") {
       this.display[0].flashCall("url", vo.value);
     } else if (vo.type == "play") {
@@ -36,6 +40,13 @@ class FlashVideo extends BaseVideo {
     } else if (vo.type == "volume") {
       this.display[0].flashCall("volume", vo.value);
     }
+  }
+
+  destory(){
+    super();
+  }
+
+  _removeEvent_(){
   }
 }
 export default FlashVideo;

@@ -7,7 +7,7 @@ class Base {
   constructor() {
     this._claseeName = this.constructor.name;
     this._instanceName = "null";
-    this._destroy = false;
+    this._destroy_ = false;
     debug.log("yabase");
   }
 
@@ -15,12 +15,13 @@ class Base {
   _removeEvent_() {}
 
   destory() {
-    this._destroy = true;
+    this._removeEvent_();
+    this._destroy_ = true;
     debug.log("destory");
   }
 
-  get destory() {
-    return this._destroy;
+  get destorystatus() {
+    return this._destroy_;
   }
 }
 export default Base;
