@@ -29,6 +29,7 @@ _rules.push({
   ]
 });
 var webpackConfig = {
+  devtool:'eval-source-map',
   entry: "./src/player.js",
   output: {
     path: __dirname,
