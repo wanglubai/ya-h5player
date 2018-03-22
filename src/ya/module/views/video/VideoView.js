@@ -8,7 +8,7 @@ class VideoView extends Base {
     super();
   }
   init() {
-    if (flvjs.isSupported()) {
+    if (flvjs.isSupported() == false) {
       this._video = new FlvVideo();
     } else {
       this._video = new FlashVideo();
@@ -22,6 +22,9 @@ class VideoView extends Base {
   }
   pause() {
     this._video.setCacheVo({ type: "pause", value: 1 });
+  }
+  volume(val) {
+    this._video.setCacheVo({ type: "volume", value: val });
   }
 }
 
