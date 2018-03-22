@@ -6,6 +6,25 @@
   position: absolute;
 }
 
+.ya-screen-btn {
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  margin-right: 8px;
+  margin-top: 8px;
+  float: right;
+  background: url("../../../../res/button/screen_normal.png");
+}
+.ya-screen-btn:hover {
+  background: url("../../../../res/button/screen_over.png");
+}
+.ya-screen-btn1 {
+  background: url("../../../../res/button/screen1_normal.png");
+}
+.ya-screen-btn1:hover {
+  background: url("../../../../res/button/screen1_over.png");
+}
+
 .ya-play-btn {
   cursor: pointer;
   width: 23px;
@@ -13,10 +32,16 @@
   margin-left: 8px;
   margin-top: 8px;
   float: left;
-  background: url("../../../../res/button/play_first_normal.png");
+  background: url("../../../../res/button/play_normal.png");
 }
 .ya-play-btn:hover {
-  background: url("../../../../res/button/play_first_over.png");
+  background: url("../../../../res/button/play_over.png");
+}
+.ya-play-btn1 {
+  background: url("../../../../res/button/play1_normal.png");
+}
+.ya-play-btn1:hover {
+  background: url("../../../../res/button/play1_over.png");
 }
 
 .ya-sharpness-btn {
@@ -26,10 +51,16 @@
   margin-top: 6px;
   margin-right: 8px;
   float: right;
-  background: url("../../../../res/button/sharpness_first_normal.png");
+  background: url("../../../../res/button/sharpness_normal.png");
 }
 .ya-sharpness-btn:hover {
-  background: url("../../../../res/button/sharpness_first_over.png");
+  background: url("../../../../res/button/sharpness_over.png");
+}
+.ya-sharpness-btn1 {
+  background: url("../../../../res/button/sharpness_normal.png");
+}
+.ya-sharpness-btn1:hover {
+  background: url("../../../../res/button/sharpness_over.png");
 }
 
 .ya-animation-btn {
@@ -52,10 +83,16 @@
   margin-top: 8px;
   margin-right: 8px;
   float: right;
-  background: url("../../../../res/button/rotate_first_normal.png");
+  background: url("../../../../res/button/rotate_normal.png");
 }
 .ya-rotate-btn:hover {
-  background: url("../../../../res/button/rotate_first_over.png");
+  background: url("../../../../res/button/rotate_over.png");
+}
+.ya-rotate-btn1 {
+  background: url("../../../../res/button/rotate_normal.png");
+}
+.ya-rotate-btn1:hover {
+  background: url("../../../../res/button/rotate_over.png");
 }
 
 .ya-music-btn {
@@ -65,10 +102,16 @@
   margin-top: 7px;
   margin-right: 8px;
   float: right;
-  background: url("../../../../res/button/music_first_normal.png");
+  background: url("../../../../res/button/music_normal.png");
 }
 .ya-music-btn:hover {
-  background: url("../../../../res/button/music_first_over.png");
+  background: url("../../../../res/button/music_over.png");
+}
+.ya-music-btn1 {
+  background: url("../../../../res/button/music1_normal.png");
+}
+.ya-music-btn1:hover {
+  background: url("../../../../res/button/music1_over.png");
 }
 
 .ya-bullet-btn {
@@ -78,8 +121,14 @@
   margin-top: 12px;
   margin-right: 8px;
   float: right;
-  background: url("../../../../res/button/bullet_first_normal.png");
+  background: url("../../../../res/button/bullet_normal.png");
 }
 .ya-bullet-btn:hover {
-  background: url("../../../../res/button/bullet_first_over.png");
+  background: url("../../../../res/button/bullet_over.png");
+}
+.ya-bullet-btn1 {
+  background: url("../../../../res/button/bullet1_normal.png");
+}
+.ya-bullet-btn1:hover {
+  background: url("../../../../res/button/bullet1_over.png");
 }

@@ -1,6 +1,8 @@
 import BaseVideo from "./BaseVideo";
 import flvjs from "../../../../libs/flv/flv";
 import LayerManager from "../../managers/LayerManager";
+import { debug } from "util";
+import VideoEvent from "./VideoEvent";
 
 class FlvVideo extends BaseVideo {
   constructor() {
@@ -26,17 +28,21 @@ class FlvVideo extends BaseVideo {
       this.display[0].pause();
     }
   }
-  
+
   playUrl(url) {
     if (this.flvPlayer == null) {
       this.flvPlayer = flvjs.createPlayer({
         type: "flv",
         url: url
       });
+      this.flvPlayer.on("media_info", e => this.mediaInfoFun(e));
       this.flvPlayer.attachMediaElement(this.display[0]);
       this.flvPlayer.load();
       this.flvPlayer.play();
     }
+  }
+  mediaInfoFun(e) {
+    this.emit(VideoEvent.VideoPlayState);
   }
 }
 export default FlvVideo;

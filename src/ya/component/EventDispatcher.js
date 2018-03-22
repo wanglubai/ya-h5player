@@ -6,7 +6,7 @@ class EventDispatcher extends Base {
     super();
     this._listeners = {};
   }
-  addEventListener(type, listener) {
+  on(type, listener) {
     if (this._listeners[type]) {
       if (this._listeners[type].indexOf(listener) == -1)
         this._listeners[type].push(listener);
@@ -14,7 +14,7 @@ class EventDispatcher extends Base {
       this._listeners[type] = [listener];
     }
   }
-  removeEventListener(type, listener) {
+  removeListener(type, listener) {
     var arr = this._listeners[type];
     if (!arr) return;
     var index = arr.indexOf(listener);
@@ -25,7 +25,7 @@ class EventDispatcher extends Base {
       }
     }
   }
-  dispatchEvent(eventObj) {
+  emit(eventObj) {
     var type = null;
     var vo = {};
     if (typeof eventObj == "string") {

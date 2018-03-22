@@ -5,10 +5,14 @@ import debug from "./Debug.js";
 
 class Base {
   constructor() {
-    this._claseeName = "Base";
+    this._claseeName = this.constructor.name;
+    this._instanceName = "null";
     this._destroy = false;
     debug.log("yabase");
   }
+
+  _addEvent_() {}
+  _removeEvent_() {}
 
   destory() {
     this._destroy = true;

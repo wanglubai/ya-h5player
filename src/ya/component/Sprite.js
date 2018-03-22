@@ -16,8 +16,7 @@ class Sprite extends EventDispatcher {
   }
 
   _dealVo_(vo) {}
-  _addEvent_() {}
-  _removeEvent_() {}
+ 
 
   initDisplay(display) {
     this._display = display;
@@ -58,7 +57,9 @@ class Sprite extends EventDispatcher {
     }
   }
   removeClass() {
-    this._display.removeClass(arguments);
+    for (var i = 0; i < arguments.length; i++) {
+      this._display.removeClass(arguments[i]);
+    }
   }
   append() {
     for (var i = 0; i < arguments.length; i++) {
