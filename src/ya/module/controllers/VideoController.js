@@ -12,13 +12,23 @@ class VideoController extends BaseController {
   constructor() {
     super();
     this._videoView = null;
-    Dispatcher.addEventListener(EventType.InnerInit, this.eventFun);
+  }
+  init() {
+    Dispatcher.addEventListener(EventType.InnerInit, this.eventFun.bind(vo));
+    Dispatcher.addEventListener(EventType.VideoPlay, e => this.eventFun(e));
+    Dispatcher.addEventListener(EventType.VideoPause, e => this.eventFun(e));
   }
   eventFun(e) {
     if (e.type == EventType.InnerInit) {
       this._videoView = new VideoView();
       this._videoView.init();
-      this._videoView.playUrl('http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483');
+      this._videoView.playUrl(
+        "http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483"
+      );
+    } else if (e.type == EventType.VideoPlay) {
+      this._videoView.play();
+    } else if (e.type == EventType.VideoPause) {
+      this._videoView.pause();
     }
   }
 }

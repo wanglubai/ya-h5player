@@ -54,7 +54,6 @@ class Sprite extends EventDispatcher {
   }
   addClass() {
     for (var i = 0; i < arguments.length; i++) {
-      debugger
       this._display.addClass(arguments[i]);
     }
   }

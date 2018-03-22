@@ -8,7 +8,8 @@ class EventDispatcher extends Base {
   }
   addEventListener(type, listener) {
     if (this._listeners[type]) {
-      if (this._listeners[type].indexOf(listener) == -1) this._listeners[type].push(listener);
+      if (this._listeners[type].indexOf(listener) == -1)
+        this._listeners[type].push(listener);
     } else {
       this._listeners[type] = [listener];
     }

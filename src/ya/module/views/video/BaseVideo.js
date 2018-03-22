@@ -5,9 +5,7 @@ class BaseVideo extends Sprite {
     super();
   }
 
-  show() { }
-  hide() { }
-  play() { }
-  pause() { }
+  play() {}
+  pause() {}
 }
 export default BaseVideo;

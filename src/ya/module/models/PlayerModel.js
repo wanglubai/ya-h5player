@@ -1,6 +1,8 @@
-import PlayerModel from "./BaseModel";
+import BaseModel from "./BaseModel";
 
 class PlayerModel extends BaseModel {
-  constructor(params) {}
+  constructor() {
+    super();
+  }
 }
 export default new PlayerModel();

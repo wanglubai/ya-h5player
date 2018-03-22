@@ -20,32 +20,32 @@ class ConfigModel extends BaseModel {
   }
 
   initBar(){
-    if(localStorage('_giftVisible')){
+    if(this.localStorageHas('_giftVisible')){
       this._giftVisible=this.getLocalStorage('_giftVisible');
     }else{
       this.giftVisible=1;
     }
-    if(localStorageHas('_musicVal')){
+    if(this.localStorageHas('_musicVal')){
       this._musicVal=this.getLocalStorage('_musicVal');
     }else{
       this.musicVal=40;
     }
-    if(localStorageHas('_bulletAlpha')){
+    if(this.localStorageHas('_bulletAlpha')){
      this._bulletAlpha=this.getLocalStorage('_bulletAlpha');
     }else{
       this.bulletAlpha=100;
     }
-    if(localStorage('_bulletType')){
+    if(this.localStorageHas('_bulletType')){
       this._bulletType=this.getLocalStorage('_bulletType');
     }else{
       this.bulletType=0;
     }
-    if(localStorage('_bulletVisible')){
+    if(this.localStorageHas('_bulletVisible')){
       this._bulletVisible=this.getLocalStorage('_bulletVisible');
     }else{
       this.bulletVisible=1;
     }
-    if(localStorage('_preNoLogin')){
+    if(this.localStorageHas('_preNoLogin')){
       this._preNoLogin=this.getLocalStorage('_preNoLogin');
     }else{
       this.preNoLogin=1;
@@ -64,7 +64,7 @@ class ConfigModel extends BaseModel {
     return window.localStorage[key];
   }
 
-  set giftVisible(){
+  set giftVisible(val){
     this.setLocalStorage('_giftVisible',arguments[0]);
     this._giftVisible=arguments[0];
   }
@@ -72,7 +72,7 @@ class ConfigModel extends BaseModel {
     return this._giftVisible;
   }
 
-  set musicVal(){
+  set musicVal(val){
     this.setLocalStorage('_musicVal',arguments[0]);
     this._musicVal=arguments[0];
   }
@@ -80,7 +80,7 @@ class ConfigModel extends BaseModel {
     return this._musicVal;
   }
   
-  set bulletAlpha(){
+  set bulletAlpha(val){
     this.setLocalStorage('_bulletAlpha',arguments[0]);
     this._bulletAlpha=arguments[0];
   }
@@ -88,7 +88,7 @@ class ConfigModel extends BaseModel {
     return this._bulletAlpha;
   }
 
-  set bulletType(){
+  set bulletType(val){
     this.setLocalStorage('_bulletType',arguments[0]);
     this._bulletType=arguments[0];
   }
@@ -96,7 +96,7 @@ class ConfigModel extends BaseModel {
     return this._bulletType;
   }
 
-  set bulletVisible(){
+  set bulletVisible(val){
     this.setLocalStorage('_bulletVisible',arguments[0]);
     this._bulletVisible=arguments[0];
   }
@@ -104,7 +104,7 @@ class ConfigModel extends BaseModel {
     return this._bulletVisible;
   }
 
-  set preNoLogin(){
+  set preNoLogin(val){
     this.setLocalStorage('_preNoLogin',arguments[0]);
     this._preNoLogin=arguments[0];
   }
@@ -112,4 +112,4 @@ class ConfigModel extends BaseModel {
     return this._preNoLogin;
   }
 }
-export default ConfigModel;
+export default new ConfigModel();

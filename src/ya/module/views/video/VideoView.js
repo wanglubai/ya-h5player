@@ -17,6 +17,12 @@ class VideoView extends Base {
   playUrl(url) {
     this._video.setCacheVo({ type: "url", value: url });
   }
+  play() {
+    this._video.setCacheVo({ type: "play", value: 1 });
+  }
+  pause() {
+    this._video.setCacheVo({ type: "pause", value: 1 });
+  }
 }
 
 export default VideoView;

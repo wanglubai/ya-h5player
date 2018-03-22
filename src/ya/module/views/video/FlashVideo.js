@@ -19,6 +19,7 @@ class FlashVideo extends BaseVideo {
       tempThis.flashCall(arr);
     };
   }
+
   flashCall(arr) {
     if (arr[0] == "flashInit") {
       this.resReady = true;
@@ -28,6 +29,10 @@ class FlashVideo extends BaseVideo {
   _dealVo_(vo) {
     if (vo.type == "url") {
       this.display[0].flashCall("url", vo.value);
+    } else if (vo.type == "play") {
+      this.display[0].flashCall("play");
+    } else if (vo.type == "pause") {
+      this.display[0].flashCall("pause");
     }
   }
 }

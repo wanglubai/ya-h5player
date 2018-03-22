@@ -12,7 +12,7 @@ class BarController extends BaseController {
     if (e.type == EventType.InnerInit) {
       this._controlbarView = new ControlbarView();
       this._controlbarView.setVo();
-    }
+    } 
   }
 }
 export default new BarController();
