@@ -7,6 +7,7 @@ import VideoLoad from "./VideoLoad";
 import BaseVideo from "./BaseVideo";
 import EventDispatcher from "../../../component/EventDispatcher";
 import "./VideoViewCss.css";
+import { debug } from "util";
 
 class VideoView extends EventDispatcher {
   constructor() {
@@ -36,6 +37,13 @@ class VideoView extends EventDispatcher {
         break;
     }
   }
+
+  _dealVo_(vo) {
+    if (vo["type"] == "init") {
+      this._init();
+    }
+  }
+
   _init() {
     this._initVideo();
     this._initVideoLogo();

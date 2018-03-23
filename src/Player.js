@@ -14,6 +14,7 @@ class Player extends Sprite {
     this.appendToById(this._vo["container"]);
     this.init();
     this._addEvent_();
+
   }
   init() {
     LayerManager.init(this);

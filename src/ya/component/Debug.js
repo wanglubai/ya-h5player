@@ -1,9 +1,7 @@
 class Debug {
-  constructor() {
-
-  }
+  constructor() {}
   log() {
-    // console.log(arguments);
+    console.log(arguments[0]);
   }
 }
 export default new Debug();

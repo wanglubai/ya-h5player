@@ -1,7 +1,7 @@
-import YaDanmaku from "../views/danmaku/YaDanmaku";
 import BaseController from "./BaseController";
 import EventType from "../../component/EventType";
 import Dispatcher from "../../component/Dispatcher";
+import DanmakuView from "../views/danmaku/DanmakuView";
 
 class DanmakuController extends BaseController {
   constructor() {
@@ -26,7 +26,7 @@ class DanmakuController extends BaseController {
   }
   _initDanmakuView() {
     if (this._danmakuView == null) {
-      this._danmakuView = new YaDanmaku();
+      this._danmakuView = new DanmakuView();
     }
     setInterval(this.addVo.bind(),1000/24)
   }

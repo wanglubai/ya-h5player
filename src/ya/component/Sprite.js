@@ -2,7 +2,6 @@ import EventDispatcher from "./EventDispatcher.js";
 class Sprite extends EventDispatcher {
   constructor() {
     super();
-    this._claseeName = "Sprite";
     this._display = null;
   }
 
@@ -39,6 +38,11 @@ class Sprite extends EventDispatcher {
       this._display.removeClass(arguments[i]);
     }
   }
+  append$() {
+    for (var i = 0; i < arguments.length; i++) {
+      this._display.append(arguments[i]);
+    }
+  }
   append() {
     for (var i = 0; i < arguments.length; i++) {
       this._display.append(arguments[i].display);
@@ -55,6 +59,9 @@ class Sprite extends EventDispatcher {
   }
   hide() {
     this._display.hide();
+  }
+  $on() {
+    this._display.on(arguments[0], arguments[1]);
   }
 
   resizeFresh() {}

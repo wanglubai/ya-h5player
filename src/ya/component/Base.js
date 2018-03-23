@@ -6,12 +6,11 @@ import debug from "./Debug.js";
 class Base {
   constructor() {
     this._claseeName = this.constructor.name;
-    this._instanceName = "null";
     this._resReady = false;
     this._destroy_ = false;
     this._cacheVos = [];
     this._vo = null;
-    debug.log("yabase");
+    // debug.log(this._claseeName + "-" + Base.Index++);
   }
 
   setCacheVo(vo) {
@@ -38,6 +37,10 @@ class Base {
     }
   }
 
+  funCreateDom(str) {
+    return $(str);
+  }
+
   set resReady(bl) {
     if (bl) {
       this._resReady = true;
@@ -55,4 +58,5 @@ class Base {
     return this._destroy_;
   }
 }
+Base.Index = 0;
 export default Base;

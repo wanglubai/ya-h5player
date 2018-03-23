@@ -6,6 +6,7 @@ import Button from "../../../component/Button";
 import ControlbarButton from "./ControlbarButton";
 import EventType from "../../../component/EventType";
 import Dispatcher from "../../../component/Dispatcher";
+import MusicTips from "./MusicTips";
 
 class ControlbarView extends Sprite {
   constructor() {
@@ -24,6 +25,7 @@ class ControlbarView extends Sprite {
         button.on(ControlbarButton.ButtonClick, this.eventFun.bind(this));
       }
     }
+    // new MusicTips();
   }
   eventFun(e) {
     if (e.type == ControlbarButton.ButtonClick) {
