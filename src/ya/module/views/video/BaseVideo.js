@@ -7,4 +7,7 @@ class BaseVideo extends Sprite {
   play() {}
   pause() {}
 }
+BaseVideo.VideoLoadState = "BaseVideo.VideoLoadState";
+BaseVideo.VideoPlayState = "BaseVideo.VideoPlayState";
+BaseVideo.VideoErrorState = "BaseVideo.VideoErrorState";
 export default BaseVideo;

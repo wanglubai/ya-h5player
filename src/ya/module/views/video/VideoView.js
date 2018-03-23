@@ -1,13 +1,14 @@
-import Base from "../../../component/Base";
 import flvjs from "../../../../libs/flv/flv";
 import FlvVideo from "./FlvVideo";
 import FlashVideo from "./FlashVideo";
 import Dispatcher from "../../../component/Dispatcher";
 import EventType from "../../../component/EventType";
 import VideoLoad from "./VideoLoad";
-import VideoEvent from "./VideoEvent";
+import BaseVideo from "./BaseVideo";
+import EventDispatcher from "../../../component/EventDispatcher";
+import "./VideoViewCss.css";
 
-class VideoView extends Base {
+class VideoView extends EventDispatcher {
   constructor() {
     super();
     this._videoLoad = null;
@@ -15,16 +16,23 @@ class VideoView extends Base {
     this._conf = null;
   }
   _addEvent_() {
-    this._video.on(VideoEvent.VideoLoadState, e => this.eventFun(e));
-    this._video.on(VideoEvent.VideoPlayState, e => this.eventFun(e));
+    this._video.ons(
+      BaseVideo.VideoLoadState,
+      BaseVideo.VideoPlayState,
+      BaseVideo.VideoErrorState,
+      this.eventFun.bind(this)
+    );
   }
   eventFun(e) {
     switch (e.type) {
-      case VideoEvent.VideoLoadState:
+      case BaseVideo.VideoLoadState:
         this.showLoad();
         break;
-      case VideoEvent.VideoPlayState:
+      case BaseVideo.VideoPlayState:
         this.hideLoad();
+        break;
+      case BaseVideo.VideoErrorState:
+        this.videoError();
         break;
     }
   }
@@ -34,6 +42,9 @@ class VideoView extends Base {
     this._addEvent_();
   }
 
+  videoError() {
+    this.emit(VideoView.VideoErrorState);
+  }
   showLoad() {
     this._videoLoad && this._videoLoad.show();
   }
@@ -42,7 +53,7 @@ class VideoView extends Base {
   }
 
   _initVideo() {
-    if (flvjs.isSupported()) {
+    if (!flvjs.isSupported()) {
       this._video = new FlvVideo();
     } else {
       this._video = new FlashVideo();
@@ -65,5 +76,5 @@ class VideoView extends Base {
     this._video.setCacheVo({ type: "volume", value: val });
   }
 }
-
+VideoView.VideoErrorState = "VideoView.VideoErrorState";
 export default VideoView;

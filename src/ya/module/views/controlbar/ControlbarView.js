@@ -5,7 +5,6 @@ import LayerManager from "../../managers/LayerManager";
 import Button from "../../../component/Button";
 import ControlbarButton from "./ControlbarButton";
 import EventType from "../../../component/EventType";
-import ControlbarButtonEvent from "./ControlbarButtonEvent";
 import Dispatcher from "../../../component/Dispatcher";
 
 class ControlbarView extends Sprite {
@@ -22,12 +21,12 @@ class ControlbarView extends Sprite {
         button.setVo({ type: "init", init: vo.list[i] });
         this.append(button);
         this._btnList[vo.list[i].id] = button;
-        button.on(ControlbarButtonEvent.ButtonClick, e => this.eventFun(e));
+        button.on(ControlbarButton.ButtonClick, this.eventFun.bind(this));
       }
     }
   }
   eventFun(e) {
-    if (e.type == ControlbarButtonEvent.ButtonClick) {
+    if (e.type == ControlbarButton.ButtonClick) {
       var _vo = e.vo;
       switch (_vo.id) {
         case "play":

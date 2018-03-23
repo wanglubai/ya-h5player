@@ -7,6 +7,7 @@ import flvjs from "../../../libs/flv/flv";
 import LayerManage from "../managers/LayerManager";
 import FlvVideo from "../views/video/FlvVideo";
 import VideoView from "../views/video/VideoView";
+import { debug } from "util";
 
 class VideoController extends BaseController {
   constructor() {
@@ -14,11 +15,14 @@ class VideoController extends BaseController {
     this._videoView = null;
   }
   init() {
-    Dispatcher.on(EventType.InnerInit, e => this.eventFun(e));
-    Dispatcher.on(EventType.VideoPlay, e => this.eventFun(e));
-    Dispatcher.on(EventType.VideoPause, e => this.eventFun(e));
-    Dispatcher.on(EventType.UiPlay, e => this.eventFun(e));
-    Dispatcher.on(EventType.UiPause, e => this.eventFun(e));
+    Dispatcher.ons(
+      EventType.UiPlay,
+      EventType.UiPause,
+      EventType.InnerInit,
+      EventType.DataPause,
+      EventType.DataPlay,
+      this.eventFun.bind(this)
+    );
   }
   eventFun(e) {
     if (e.type == EventType.InnerInit) {

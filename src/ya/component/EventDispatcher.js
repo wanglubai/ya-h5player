@@ -1,5 +1,6 @@
 import Base from "./Base.js";
 import { debug } from "util";
+import Debug from "./Debug.js";
 
 class EventDispatcher extends Base {
   constructor() {
@@ -12,6 +13,12 @@ class EventDispatcher extends Base {
         this._listeners[type].push(listener);
     } else {
       this._listeners[type] = [listener];
+    }
+  }
+  ons() {
+    var len = arguments.length - 1;
+    for (var i = 0; i < len; i++) {
+      this.on(arguments[i], arguments[len]);
     }
   }
   removeListener(type, listener) {

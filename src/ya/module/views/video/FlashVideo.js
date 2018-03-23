@@ -1,7 +1,6 @@
 import BaseVideo from "./BaseVideo.js";
 import EventType from "../../../component/EventType.js";
 import LayerManager from "../../managers/LayerManager.js";
-import VideoEvent from "./VideoEvent.js";
 class FlashVideo extends BaseVideo {
   constructor() {
     super();
@@ -17,15 +16,15 @@ class FlashVideo extends BaseVideo {
       for (var i = 0; i < arguments.length; i++) {
         arr.push(arguments[i]);
       }
-      tempThis.flashCall(arr);
+      tempThis.flashVideoCall(arr);
     };
   }
 
-  flashCall(arr) {
+  flashVideoCall(arr) {
     if (arr[0] == "flashInit") {
       this.resReady = true;
     } else if (arr[0] == "playState") {
-      this.emit(VideoEvent.VideoPlayState);
+      this.emit(BaseVideo.VideoPlayState);
     }
   }
 
@@ -43,7 +42,7 @@ class FlashVideo extends BaseVideo {
   }
 
   destory(){
-    super();
+    super.destory();
   }
 
   _removeEvent_(){

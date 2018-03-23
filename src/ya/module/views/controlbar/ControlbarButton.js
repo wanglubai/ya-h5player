@@ -1,6 +1,4 @@
 import Sprite from "../../../component/Sprite";
-import { debug } from "util";
-import ControlbarButtonEvent from "./ControlbarButtonEvent";
 
 class ControlbarButton extends Sprite {
   constructor() {
@@ -24,7 +22,7 @@ class ControlbarButton extends Sprite {
     if (e.type == "click") {
       this._initVo["value"] = this._initVo["value"] == 0 ? 1 : 0;
       this.updateState();
-      this.emit({'type':ControlbarButtonEvent.ButtonClick,'vo':this._initVo});
+      this.emit({ type: ControlbarButton.ButtonClick, vo: this._initVo });
     }
   }
   updateState() {
@@ -38,4 +36,5 @@ class ControlbarButton extends Sprite {
     this.display.on("click", this._eventFun);
   }
 }
+ControlbarButton.ButtonClick = "ControlbarButtonEvent.ButtonClick";
 export default ControlbarButton;
