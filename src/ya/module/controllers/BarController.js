@@ -3,10 +3,12 @@ import ControlbarView from "../views/controlbar/ControlbarView";
 import Dispatcher from "../../component/Dispatcher";
 import EventType from "../../component/EventType";
 import ConfigModel from "../models/ConfigModel";
+import MusicTips from "../views/controlbar/MusicTips";
 
 class BarController extends BaseController {
   constructor() {
     super();
+ 
   }
 
   init() {
@@ -36,6 +38,8 @@ class BarController extends BaseController {
       list: ConfigModel.controlbarBtnConfig
     });
     this._controlbarView.on("", this.controlbarViewEvent);
+
+    new MusicTips();
   }
 }
 export default new BarController();

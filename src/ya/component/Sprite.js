@@ -1,4 +1,5 @@
 import EventDispatcher from "./EventDispatcher.js";
+import { debug } from "util";
 class Sprite extends EventDispatcher {
   constructor() {
     super();

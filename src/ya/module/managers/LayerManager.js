@@ -21,9 +21,9 @@ class LayerManager extends EventDispatcher {
       this.VideoLayer,
       this.LoadLayer,
       this.DanmakuLayer,
-      this.TipsLayer,
       this.GiftLayer,
-      this.BarLayer
+      this.BarLayer,
+      this.TipsLayer
     );
   }
 }

@@ -1,0 +1,55 @@
+#musicContainer {
+  position: absolute;
+  top: 12px;
+  left: 13px;
+}
+
+#musicBg {
+  width: 34px;
+  height: 110px;
+  background-image: url("http://player.plures.net/prod/html5playerbase/res/components/musicBg.png");
+}
+
+#musicPro {
+  position: absolute;
+  width: 6px;
+  height: 79px;
+  background-image: url("http://player.plures.net/prod/html5playerbase/res/components/musicPro.png");
+}
+
+#musicProEv {
+  position: absolute;
+  width: 6px;
+  height: 79px;
+  cursor: pointer;
+}
+
+#musicBarBg:hover {
+  background-image: url("http://player.plures.net/prod/html5playerbase/res/components/musicBar1.png");
+}
+
+#musicBar {
+  cursor: pointer;
+  left: -6px;
+  position: absolute;
+  width: 18px;
+  height: 7px;
+}
+
+#musicBarBg {
+  position: absolute;
+  width: 18px;
+  height: 7px;
+  top: -3.5px;
+  background-image: url("http://player.plures.net/prod/html5playerbase/res/components/musicBar.png");
+}
+
+#musicBarTips {
+  left: -45px;
+  top: -50%;
+  position: absolute;
+  color: aliceblue;
+  width: 30px;
+  text-align: center;
+  background-color: #232323;
+}

@@ -5,8 +5,8 @@ class BaseTips extends Sprite {
     super();
   }
   _addEvent_() {
-    this.on("mouseenter", this.show.bind(this));
-    this.on("mouseleave", this.hide.bind(this));
+    this.$on("mouseenter", this.show.bind(this));
+    this.$on("mouseleave", this.hide.bind(this));
   }
 }
 export default BaseTips;

@@ -7,7 +7,6 @@ import VideoLoad from "./VideoLoad";
 import BaseVideo from "./BaseVideo";
 import EventDispatcher from "../../../component/EventDispatcher";
 import "./VideoViewCss.css";
-import { debug } from "util";
 
 class VideoView extends EventDispatcher {
   constructor() {
