@@ -36,7 +36,7 @@ class VideoView extends EventDispatcher {
         break;
     }
   }
-  init(conf) {
+  _init() {
     this._initVideo();
     this._initVideoLogo();
     this._addEvent_();

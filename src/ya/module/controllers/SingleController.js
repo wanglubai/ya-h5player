@@ -3,6 +3,7 @@ import VideoController from "./VideoController";
 import BarController from "./BarController";
 import ConfigModel from "../models/ConfigModel";
 import PlayerModel from "../models/PlayerModel";
+import DanmakuController from "./DanmakuController";
 
 class SingleController extends BaseController {
   constructor() {
@@ -13,6 +14,7 @@ class SingleController extends BaseController {
     PlayerModel.init();
     VideoController.init();
     BarController.init();
+    DanmakuController.init();
   }
 }
 export default new SingleController();

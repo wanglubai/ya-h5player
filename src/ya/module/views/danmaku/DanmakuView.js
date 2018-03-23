@@ -3,8 +3,9 @@ import YaFactory from "./YaFactory";
 import Sprite from "../../../component/Sprite";
 import LayerManager from "../../managers/LayerManager";
 
-class YaDanmaku extends Sprite {
+class DanmakuView extends Sprite {
   constructor() {
+    super();
     this._isInit = false;
     this._lineHeight = 40;
     this._voList = [];
@@ -16,7 +17,13 @@ class YaDanmaku extends Sprite {
     this._startRatio = 0;
     this._endRatio = 1;
     this._setInterval = -1;
-    this.initDisplay(LayerManager.DanmakuLayer);
+
+    this.initDivDisplay("YaDanmaku");
+    LayerManager.DanmakuLayer.append(this);
+  }
+
+  _dealVo_() {
+    
   }
 
   init(vo) {
@@ -96,4 +103,4 @@ class YaDanmaku extends Sprite {
   }
 }
 
-export default YaDanmaku;
+export default DanmakuView;

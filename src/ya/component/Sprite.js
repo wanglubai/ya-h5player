@@ -3,20 +3,8 @@ class Sprite extends EventDispatcher {
   constructor() {
     super();
     this._claseeName = "Sprite";
-    this._vo = null;
     this._display = null;
-    this._cacheVos = [];
-    this._resReady = false;
   }
-
-  _updateVo() {
-    if (this.destorystatus) return;
-    while (this._cacheVos.length > 0) {
-      this._dealVo_(this._cacheVos.shift());
-    }
-  }
-
-  _dealVo_(vo) {}
 
   initDisplay(display) {
     this._display = display;
@@ -30,19 +18,7 @@ class Sprite extends EventDispatcher {
     this._display = $('<div class="ya-' + className + '"></div>');
     return this;
   }
-  setCacheVo(vo) {
-    if (this.destorystatus) return;
-    this._cacheVos.push(vo);
-    if (this._resReady) {
-      this._updateVo();
-    }
-  }
 
-  setVo(vo) {
-    if (this.destorystatus) return;
-    this._vo = vo;
-    this._dealVo_(this._vo);
-  }
   css() {
     if (arguments.length == 1) {
       return this._display.css(arguments[0]);
@@ -85,13 +61,6 @@ class Sprite extends EventDispatcher {
   destory() {
     this.removeEvent();
     super.destory();
-  }
-
-  set resReady(bl) {
-    if (bl) {
-      this._resReady = true;
-      this._updateVo();
-    }
   }
 
   get display() {

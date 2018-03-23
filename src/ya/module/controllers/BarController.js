@@ -7,21 +7,35 @@ import ConfigModel from "../models/ConfigModel";
 class BarController extends BaseController {
   constructor() {
     super();
-    Dispatcher.on(EventType.InnerInit, this.eventFun);
   }
-  
+
+  init() {
+    this._addEvent_();
+  }
+
+  _addEvent_() {
+    Dispatcher.ons(EventType.InnerInit, this.eventFun.bind(this));
+  }
+
   eventFun(e) {
-    if (e.type == EventType.InnerInit) {
-      this._controlbarView = new ControlbarView();
-      this._controlbarView.setVo({
-        type: "init",
-        list: ConfigModel.controlbarBtnConfig
-      });
-      this._controlbarView.on('',this.controlbarViewEvent)
+    switch (e.type) {
+      case EventType.InnerInit:
+        this._initControlbarView();
+        break;
+      default:
+        Debug.log("BarController No match " + e.type);
+        break;
     }
   }
-  controlbarViewEvent(){
-
+  _initControlbarView() {
+    if (this._controlbarView == null) {
+      this._controlbarView = new ControlbarView();
+    }
+    this._controlbarView.setVo({
+      type: "init",
+      list: ConfigModel.controlbarBtnConfig
+    });
+    this._controlbarView.on("", this.controlbarViewEvent);
   }
 }
 export default new BarController();
