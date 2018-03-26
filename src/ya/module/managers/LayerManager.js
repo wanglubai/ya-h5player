@@ -22,9 +22,9 @@ class LayerManager extends EventDispatcher {
       this.LoadLayer,
       this.DanmakuLayer,
       this.GiftLayer,
-      this.BarLayer,
-      this.TipsLayer
+      this.BarLayer
     );
+    this.TipsLayer.$appendTo($('body'));
   }
 }
 export default new LayerManager();

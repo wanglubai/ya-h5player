@@ -4,6 +4,8 @@ class ControlbarButton extends Sprite {
   constructor() {
     super();
     this._initVo = null;
+    this._tips = null;
+    this._parent = null;
     this.initHtmlDisplay('<a class="ya-button"></a>');
   }
   _dealVo_(vo) {
@@ -15,8 +17,32 @@ class ControlbarButton extends Sprite {
       this._addEvent_();
     }
   }
+  setTips(tips) {
+    this._tips = tips;
+    this.$on("mouseenter", this._tipsEvent.bind(this));
+    this.$on("mouseleave", this._tipsEvent.bind(this));
+  }
   _addEvent_() {
-    this.display.on("click", e => this._eventFun(e));
+    this.$on("click", e => this._eventFun(e));
+  }
+  _tipsEvent(e) {
+    switch (e.type) {
+      case 'mouseenter':
+        this._showTips();
+        break;
+      case 'mouseleave':
+        this._hideTips();
+        break;
+    }
+  }
+  _showTips(e) {
+    debugger
+    var x = this.offset_left + this.cacheWidth / 2;
+    var y = this.yparent.offset_top;
+    this._tips && this._tips.setShowPosition(x, y);
+  }
+  _hideTips() {
+    this._tips && this._tips.hide();
   }
   _eventFun(e) {
     if (e.type == "click") {
@@ -33,7 +59,18 @@ class ControlbarButton extends Sprite {
     }
   }
   _removeEvent_() {
-    this.display.on("click", this._eventFun);
+    this.display.off("click", this._eventFun);
+    if (this.tips) {
+      this.display.off("mouseenter", e => this._tips(e));
+      this.display.off("mouseleave", e => this._tips(e));
+    }
+  }
+  destory() {
+    super.destory();
+    if (this.tips) {
+      this.tips.destory();
+      this._tips = null;
+    }
   }
 }
 ControlbarButton.ButtonClick = "ControlbarButtonEvent.ButtonClick";

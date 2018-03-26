@@ -6,7 +6,7 @@ import Button from "../../../component/Button";
 import ControlbarButton from "./ControlbarButton";
 import EventType from "../../../component/EventType";
 import Dispatcher from "../../../component/Dispatcher";
-import MusicTips from "./MusicTips";
+import DescribeTips from "../../../component/DescribeTips";
 
 class ControlbarView extends Sprite {
   constructor() {
@@ -19,13 +19,17 @@ class ControlbarView extends Sprite {
     if (vo.type == "init") {
       for (var i = 0; i < vo.list.length; i++) {
         var button = new ControlbarButton();
+
+        var tips=new DescribeTips();
+        tips.setVo({'type':DescribeTips.Type_Describe,value:'aa'});
+        button.setTips(tips);
+        
         button.setVo({ type: "init", init: vo.list[i] });
         this.append(button);
         this._btnList[vo.list[i].id] = button;
         button.on(ControlbarButton.ButtonClick, this.eventFun.bind(this));
       }
     }
-    // new MusicTips();
   }
   eventFun(e) {
     if (e.type == ControlbarButton.ButtonClick) {
