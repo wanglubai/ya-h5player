@@ -10,13 +10,13 @@ class BaseTips extends Sprite {
     this.$on("mouseleave", this.hide.bind(this));
   }
   setShowPosition(x, y, type) {
-    if (!type || type == 'center') {
+    if (!type || type == "center") {
       this.css("left", x - this.cacheWidth / 2);
       this.css("top", y - this.cacheHeight);
     }
     this.show();
   }
+  init() {}
 }
-
 
 export default BaseTips;

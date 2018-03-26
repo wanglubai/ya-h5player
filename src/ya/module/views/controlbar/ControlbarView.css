@@ -3,8 +3,7 @@
   height: 40px;
   background: #232323;
   bottom: 0px;
-  /* position: absolute; */
-  margin-bottom: 0px;
+  position: absolute;
 }
 
 .ya-screen-btn {

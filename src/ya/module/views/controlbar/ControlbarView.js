@@ -7,6 +7,7 @@ import ControlbarButton from "./ControlbarButton";
 import EventType from "../../../component/EventType";
 import Dispatcher from "../../../component/Dispatcher";
 import DescribeTips from "../../../component/DescribeTips";
+import MusicTips from "./music/MusicTips";
 
 class ControlbarView extends Sprite {
   constructor() {
@@ -19,11 +20,15 @@ class ControlbarView extends Sprite {
     if (vo.type == "init") {
       for (var i = 0; i < vo.list.length; i++) {
         var button = new ControlbarButton();
-
-        var tips=new DescribeTips();
-        tips.setVo({'type':DescribeTips.Type_Describe,value:'aa'});
+        if (vo.list[i].id == "music") {
+          var tips=new MusicTips();
+        } else {
+          var tips = new DescribeTips();
+          tips.setVo({ type: DescribeTips.Type_Describe, value: "aa" });
+        }
         button.setTips(tips);
-        
+        this.append(tips);
+        tips.init();
         button.setVo({ type: "init", init: vo.list[i] });
         this.append(button);
         this._btnList[vo.list[i].id] = button;

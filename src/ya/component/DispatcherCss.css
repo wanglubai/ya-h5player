@@ -1,4 +1,7 @@
-.ya-describe-tips{
-    border: 1px solid #ff0000;
-    position: absolute;
+.ya-describe-tips {
+  border: 1px solid #ff0000;
+  position: absolute;
+  color: #fff;
+  z-index: 3;
+  display: none;
 }

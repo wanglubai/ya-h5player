@@ -7,7 +7,6 @@ import flvjs from "../../../libs/flv/flv";
 import LayerManage from "../managers/LayerManager";
 import FlvVideo from "../views/video/FlvVideo";
 import VideoView from "../views/video/VideoView";
-import { debug } from "util";
 import Debug from "../../component/Debug";
 
 class VideoController extends BaseController {

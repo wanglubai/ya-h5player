@@ -5,7 +5,10 @@ class CountTips extends BaseTips {
     super();
     this._conut = null;
   }
-
+  _addEvent_() {
+    this.$on("mouseenter", this.show.bind(this));
+    this.$on("mouseleave", this._hide.bind(this));
+  }
   show() {
     this._clearCount();
     super.show();

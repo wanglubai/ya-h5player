@@ -1,55 +1,49 @@
-#musicContainer {
+.ya-music-tips {
   position: absolute;
-  top: 12px;
-  left: 13px;
-}
-
-#musicBg {
+  background: url("./../../../../../res/component/music_tips.png");
+  display: none;
   width: 34px;
   height: 110px;
-  background-image: url("http://player.plures.net/prod/html5playerbase/res/components/musicBg.png");
 }
-
-#musicPro {
+.ya-music-tips-container {
+  top: 12px;
+  left: 13px;
+  position: absolute;
+}
+.ya-music-tips-probg {
   position: absolute;
   width: 6px;
   height: 79px;
-  background-image: url("http://player.plures.net/prod/html5playerbase/res/components/musicPro.png");
+  background-image: url("./../../../../../res/component/musicPro.png");
 }
-
-#musicProEv {
+.ya-music-tips-event {
   position: absolute;
   width: 6px;
   height: 79px;
   cursor: pointer;
 }
-
-#musicBarBg:hover {
-  background-image: url("http://player.plures.net/prod/html5playerbase/res/components/musicBar1.png");
-}
-
-#musicBar {
-  cursor: pointer;
+.ya-music-tips-btn-container {
   left: -6px;
   position: absolute;
-  width: 18px;
-  height: 7px;
 }
-
-#musicBarBg {
+.ya-music-tips-btn:hover {
+  background-repeat: no-repeat;
+  background-image: url("./../../../../../res/component/musicBar1.png");
+}
+.ya-music-tips-btn {
+  cursor: pointer;
   position: absolute;
   width: 18px;
   height: 7px;
-  top: -3.5px;
-  background-image: url("http://player.plures.net/prod/html5playerbase/res/components/musicBar.png");
+  background-size:18px 7px;
+  background-repeat: no-repeat;
+  background-image: url("./../../../../../res/component/musicBar.png");
 }
-
-#musicBarTips {
-  left: -45px;
+.ya-music-tips-describe {
+  right: 30px;
   top: -50%;
   position: absolute;
   color: aliceblue;
-  width: 30px;
   text-align: center;
   background-color: #232323;
 }

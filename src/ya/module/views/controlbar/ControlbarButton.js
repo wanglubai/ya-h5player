@@ -27,18 +27,17 @@ class ControlbarButton extends Sprite {
   }
   _tipsEvent(e) {
     switch (e.type) {
-      case 'mouseenter':
+      case "mouseenter":
         this._showTips();
         break;
-      case 'mouseleave':
+      case "mouseleave":
         this._hideTips();
         break;
     }
   }
   _showTips(e) {
-    debugger
-    var x = this.offset_left + this.cacheWidth / 2;
-    var y = this.yparent.offset_top;
+    var x = this.$position()["left"] + this.cacheWidth / 2;
+    var y = this.$position()["top"];
     this._tips && this._tips.setShowPosition(x, y);
   }
   _hideTips() {

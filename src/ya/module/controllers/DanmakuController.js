@@ -31,7 +31,6 @@ class DanmakuController extends BaseController {
     setInterval(this.addVo.bind(),1000/24)
   }
   addVo(){
-
   }
 }
 export default new DanmakuController();

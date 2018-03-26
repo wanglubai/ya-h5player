@@ -9,17 +9,13 @@ import MusicTips from "../views/controlbar/music/MusicTips";
 class BarController extends BaseController {
   constructor() {
     super();
- 
   }
-
   init() {
     this._addEvent_();
   }
-
   _addEvent_() {
     Dispatcher.ons(EventType.InnerInit, this.eventFun.bind(this));
   }
-
   eventFun(e) {
     switch (e.type) {
       case EventType.InnerInit:
@@ -39,7 +35,6 @@ class BarController extends BaseController {
       list: ConfigModel.controlbarBtnConfig
     });
     this._controlbarView.on("", this.controlbarViewEvent);
-
     // new MusicTips();
     // new DanmakuTips();
   }

@@ -6,7 +6,7 @@ class Sprite extends EventDispatcher {
     this._display = null;
     this._width = null;
     this._height = null;
-    this._yparent=null;
+    this._yparent = null;
   }
 
   initDisplay(display) {
@@ -21,13 +21,18 @@ class Sprite extends EventDispatcher {
     this._display = $('<div class="ya-' + className + '"></div>');
     return this;
   }
-
   css() {
     if (arguments.length == 1) {
       return this._display.css(arguments[0]);
     } else {
       this._display.css(arguments[0], arguments[1]);
     }
+  }
+  $position() {
+    return this._display.position();
+  }
+  $find(){
+    return this._display.find(arguments[0]);
   }
   attr() {
     this._display.attr(arguments[0], arguments[1]);
@@ -83,19 +88,17 @@ class Sprite extends EventDispatcher {
   $text() {
     this._display.text(arguments[0]);
   }
-  resizeFresh() { }
+  resizeFresh() {}
   destory() {
     this.removeEvent();
     super.destory();
   }
-
   get yparent() {
     return this._yparent;
   }
   set yparent(yparent) {
     this._yparent = yparent;
   }
-
   get cacheWidth() {
     if (!this._width) {
       this._width = this._display.width();
@@ -108,11 +111,9 @@ class Sprite extends EventDispatcher {
     }
     return this._height;
   }
-
   get display() {
     return this._display;
   }
-
   set vo(param) {
     this._vo = param;
   }
