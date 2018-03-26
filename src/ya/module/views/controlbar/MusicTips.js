@@ -18,26 +18,26 @@ class MusicTips extends CountTips {
   }
   _addEvent_() {
     var tempThis = this;
-    $("#musicBar").on("mousedown", function(ev) {
-      var disY = ev.clientY;
-      var val = $("#musicBar").position().top;
-      $(document).on("mousemove", function(ev1) {
-        this._setProVal(val + ev1.clientY - disY);
-        console.log(val + ev1.clientY - disY);
-      });
-      $(document).on("mouseup", function() {
-        $(document).off("mouseup");
-        $(document).off("mousemove");
-      });
-      return false;
-    });
-    $("#musicBar").on("mouseenter", function(ev1) {
-      $("#musicBarTips").show();
-    });
-    $("#musicBar").on("mouseleave", function(ev1) {
-      $("#musicBarTips").hide();
-    });
-    $("#musicProEv").on("mousedown", tempThis._setProVal(e));
+    // $("#musicBar").on("mousedown", function(ev) {
+    //   var disY = ev.clientY;
+    //   var val = $("#musicBar").position().top;
+    //   $(document).on("mousemove", function(ev1) {
+    //     this._setProVal(val + ev1.clientY - disY);
+    //     console.log(val + ev1.clientY - disY);
+    //   });
+    //   $(document).on("mouseup", function() {
+    //     $(document).off("mouseup");
+    //     $(document).off("mousemove");
+    //   });
+    //   return false;
+    // });
+    // $("#musicBar").on("mouseenter", function(ev1) {
+    //   $("#musicBarTips").show();
+    // });
+    // $("#musicBar").on("mouseleave", function(ev1) {
+    //   $("#musicBarTips").hide();
+    // });
+    // $("#musicProEv").on("mousedown", tempThis._setProVal(e));
   }
   _setProVal(e) {
     val = e.offsetY;
