@@ -13,14 +13,23 @@ class MusicTips extends CountTips {
       "</div></div>";
     this.initHtmlDisplay(dom);
     this._addEvent_();
-
     this._startClickY = 0;
     this._startBtnY = 0;
     this._volume = 0;
     this._y = 0;
   }
-  init() {
-    this._proBgHeight = this.$find(".ya-music-tips-probg").height();
+  _init() {
+
+    this._updateView();
+  }
+  _dealVo_(vo) {
+    switch (vo.type) {
+      case 'init':
+        this._proBgHeight = this.$find(".ya-music-tips-probg").height();
+        this.volume = vo.value;
+        this._init();
+        break;
+    }
   }
   _addEvent_() {
     super._addEvent_();
@@ -35,7 +44,7 @@ class MusicTips extends CountTips {
     switch (type) {
       case "hit":
         this._y = Math.min(Math.max(0, e.offsetY), this._proBgHeight);
-        this._volume = 1 - this._y / this._proBgHeight;
+        this._volume = parseInt((1 - this._y / this._proBgHeight) * 100);
         this._updateView();
         this.emit({ type: MusicTips.Value_Change, value: this._volume });
         this.emit({ type: MusicTips.Value_Lazy_Change, value: this._volume });
@@ -55,7 +64,7 @@ class MusicTips extends CountTips {
           Math.max(0, this._startBtnY + e.clientY - this._startClickY),
           this._proBgHeight
         );
-        this._volume = 1 - this._y / this._proBgHeight;
+        this._volume = parseInt((1 - this._y / this._proBgHeight) * 100);
         this._updateView();
         this.emit({ type: MusicTips.Value_Change, value: this._volume });
         break;
@@ -89,7 +98,7 @@ class MusicTips extends CountTips {
 
   set volume(val) {
     this._volume = val;
-    this._y = this._volume / 100 * this._proBgHeight;
+    this._y = (1 - this._volume / 100) * this._proBgHeight;
   }
 }
 MusicTips.Value_Change = "MusicTips.Value_Change";

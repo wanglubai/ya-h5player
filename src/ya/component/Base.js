@@ -9,7 +9,6 @@ class Base {
     this._resReady = false;
     this._destroy_ = false;
     this._cacheVos = [];
-    this._vo = null;
     // debug.log(this._claseeName + "-" + Base.Index++);
   }
 
@@ -22,8 +21,7 @@ class Base {
   }
   setVo(vo) {
     if (this.destorystatus) return;
-    this._vo = vo;
-    this._dealVo_(this._vo);
+    this._dealVo_(vo);
   }
 
   _dealVo_(vo) {}
