@@ -1,0 +1,100 @@
+.ya-set-tips {
+  width: 286;
+  height: 238px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  color: #999999;
+  display: none;
+  border: 1px solid #ff0000;
+  border-radius: 6px;
+}
+.ya-set-continer1 {
+  height: 26px;
+  line-height: 26px;
+  margin-top: 18px;
+}
+.ya-set-title1 {
+  color: #999999;
+  float: left;
+  margin-left: 17px;
+}
+
+.ya-set-full,
+.ya-set-car {
+  float: left;
+  cursor: pointer;
+  margin-left: 17px;
+  border: 2px solid #2f2f2f;
+  font-size: 12px;
+  width: 46px;
+  height: 22px;
+  border-radius: 15px;
+  line-height: 22px;
+  text-align: center;
+}
+.ya-set-car {
+  margin-left: 10px;
+}
+.ya-set-line {
+  height: 1px;
+  width: 100%;
+  border-top: 1px solid #2f2f2f;
+  margin-top: 18px;
+}
+
+.ya-set-continer3 {
+  height: 26px;
+  line-height: 26px;
+  margin-top: 18px;
+}
+.ya-set-title3 {
+  color: #999999;
+  float: left;
+  margin-left: 17px;
+}
+.ya-set-density0,
+.ya-set-density1,
+.ya-set-density2 {
+  float: left;
+  cursor: pointer;
+  margin-left: 11px;
+  border: 2px solid #2f2f2f;
+  font-size: 12px;
+  width: 46px;
+  height: 22px;
+  border-radius: 15px;
+  line-height: 22px;
+  text-align: center;
+}
+.ya-set-density0 {
+  margin-left: 17px;
+}
+
+.ya-set-continer4 {
+  height: 30px;
+  line-height: 30px;
+  margin-top: 18px;
+}
+
+.ya-set-title4 {
+  color: #999999;
+  float: left;
+  margin-left: 17px;
+  letter-spacing: 8px;
+}
+
+.ya-set-alpha0,
+.ya-set-alpha1,
+.ya-set-alpha2,
+.ya-set-alpha3 {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 12px;
+  border: 2px solid #2f2f2f;
+  float: left;
+  cursor: pointer;
+  margin-left: 11px;
+}
