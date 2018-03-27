@@ -9,7 +9,7 @@ class MusicTips extends CountTips {
       "<div class='ya-music-tips-container'>" +
       "<div class='ya-music-tips-probg'></div>" +
       "<div class='ya-music-tips-event'></div>" +
-      "<div class='ya-music-tips-btn-container'><div class='ya-music-tips-btn'><div class='ya-music-tips-describe'>a</div></div></div>" +
+      "<div class='ya-music-tips-btn-container'><div class='ya-music-tips-btn'><div class='ya-music-tips-describe'></div></div></div>" +
       "</div></div>";
     this.initHtmlDisplay(dom);
     this._addEvent_();
@@ -38,7 +38,7 @@ class MusicTips extends CountTips {
         this._volume = 1 - this._y / this._proBgHeight;
         this._updateView();
         this.emit({ type: MusicTips.Value_Change, value: this._volume });
-        this.emit({ type: MusicTips.Value_Change, value: this._volume });
+        this.emit({ type: MusicTips.Value_Lazy_Change, value: this._volume });
         break;
       case "hitStart":
         this._startClickY = e.clientY;

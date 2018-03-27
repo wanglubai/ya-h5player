@@ -34,13 +34,13 @@ class FlvVideo extends BaseVideo {
         type: "flv",
         url: url
       });
-      this.flvPlayer.on("media_info", this.mediaInfoFun.bind(e));
+      this.flvPlayer.on("media_info", this._mediaInfoFun.bind(this));
       this.flvPlayer.attachMediaElement(this.display[0]);
       this.flvPlayer.load();
       this.flvPlayer.play();
     }
   }
-  mediaInfoFun(e) {
+  _mediaInfoFun(e) {
     this.emit(BaseVideo.VideoPlayState);
   }
 }

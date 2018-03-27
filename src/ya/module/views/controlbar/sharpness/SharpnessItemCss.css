@@ -1,0 +1,14 @@
+.sharpness-item {
+  font-size: 16px;
+  color: #999999;
+  width: 80px;
+  text-align: center;
+  line-height: 16px;
+}
+
+.sharpness-item-statu1 {
+  color: #ff8800;
+}
+.sharpness-item-statu0:hover {
+  color: #ff8800;
+}
