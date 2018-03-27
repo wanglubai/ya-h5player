@@ -4,9 +4,8 @@
   height: 20px;
   cursor: pointer;
   background: url("./../../../../../res/button/screen.png");
-  margin-right: 12px;
+  margin-right: 25px;
   margin-top: 11px;
-  border: 1px solid #ff0000;
 }
 .ya-screen-btn:hover {
   width: 20px;

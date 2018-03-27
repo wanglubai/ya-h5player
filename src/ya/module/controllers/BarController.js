@@ -3,7 +3,6 @@ import ControlbarView from "../views/controlbar/ControlbarView";
 import Dispatcher from "../../component/Dispatcher";
 import EventType from "../../component/EventType";
 import ConfigModel from "../models/ConfigModel";
-import DanmakuTips from "../views/controlbar/danmaku/DanmakuTips";
 import MusicTips from "../views/controlbar/music/MusicTips";
 import SharpnessButton from "../views/controlbar/sharpness/SharpnessButton";
 import LayerManager from "../managers/LayerManager";

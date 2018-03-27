@@ -11,6 +11,11 @@ import MusicTips from "./music/MusicTips";
 import SharpnessButton from "./sharpness/SharpnessButton";
 import PlayButton from "./play/PlayButton";
 import ScreenButton from "./screen/ScreenButton";
+import RotateButton from "./rotate/RotateButton";
+import RefreshButton from "./refresh/RefreshButton";
+import DanmakuButton from "./danmaku/DanmakuButton";
+import MusicButton from "./music/MusicButton";
+import SetButton from "./set/SetButton";
 
 class ControlbarView extends Sprite {
   constructor() {
@@ -30,6 +35,21 @@ class ControlbarView extends Sprite {
           btn.setVo({ type: "init", value: 0 });
         } else if (btnVo.id == "screen") {
           btn = new ScreenButton(this);
+          btn.setVo({ type: "init", value: 0 });
+        } else if (btnVo.id == "rotate") {
+          btn = new RotateButton(this);
+          btn.setVo({ type: "init", value: 0 });
+        } else if (btnVo.id == "refresh") {
+          btn = new RefreshButton(this);
+          btn.setVo({ type: "init", value: 0 });
+        } else if (btnVo.id == "danmaku") {
+          btn = new DanmakuButton(this);
+          btn.setVo({ type: "init", value: 0 });
+        } else if (btnVo.id == "music") {
+          btn = new MusicButton(this);
+          btn.setVo({ type: "init", value: 0 });
+        } else if (btnVo.id == "set") {
+          btn = new SetButton(this);
           btn.setVo({ type: "init", value: 0 });
         }
       }

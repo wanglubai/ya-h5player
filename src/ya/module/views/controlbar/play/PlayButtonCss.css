@@ -3,23 +3,26 @@
   width: 18px;
   height: 20px;
   cursor: pointer;
-  background: url("./../../../../../res/button/play.png");
-  margin-left: 12px;
+  background-repeat: no-repeat;
+  background-image: url("./../../../../../res/button/play.png");
+  margin-left: 25px;
   margin-top: 11px;
-  border: 1px solid #ff0000;
 }
 .ya-play-btn:hover {
   width: 18px;
   height: 20px;
-  background: url("./../../../../../res/button/playhover.png");
+  background-repeat: no-repeat;
+  background-image: url("./../../../../../res/button/playhover.png");
 }
 .ya-play-btn1 {
-  width: 16px;
+  width: 18px;
   height: 20px;
-  background: url("./../../../../../res/button/play1.png");
+  background-repeat: no-repeat;
+  background-image: url("./../../../../../res/button/play1.png");
 }
 .ya-play-btn1:hover {
-  width: 16px;
+  width: 18px;
   height: 20px;
-  background: url("./../../../../../res/button/play1hover.png");
+  background-repeat: no-repeat;
+  background-image: url("./../../../../../res/button/play1hover.png");
 }

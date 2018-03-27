@@ -1,0 +1,15 @@
+.ya-danmaku-btn {
+  float: right;
+  width: 54px;
+  height: 20px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("./../../../../../res/button/danmaku.png");
+  margin-right: 25px;
+  margin-top: 11px;
+}
+
+.ya-danmaku-btn1 {
+  background-repeat: no-repeat;
+  background-image: url("./../../../../../res/button/danmaku1.png");
+}

@@ -1,0 +1,24 @@
+.ya-rotate-btn {
+  float: right;
+  width: 22px;
+  height: 20px;
+  cursor: pointer;
+  background-image: url("./../../../../../res/button/rotate.png");
+  margin-right: 25px;
+  margin-top: 11px;
+}
+.ya-rotate-btn:hover {
+  width: 22px;
+  height: 20px;
+  background-image: url("./../../../../../res/button/rotatehover.png");
+}
+.ya-rotate-btn1 {
+  width: 22px;
+  height: 20px;
+  background-image: url("./../../../../../res/button/rotate1.png");
+}
+.ya-rotate-btn1:hover {
+  width: 22px;
+  height: 20px;
+  background-image: url("./../../../../../res/button/rotate1hover.png");
+}

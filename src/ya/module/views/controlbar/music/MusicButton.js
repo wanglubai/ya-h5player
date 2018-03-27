@@ -1,27 +1,22 @@
 import ControlbarButton from "../ControlbarButton";
+import './MusicButtonCss.css'
 import MusicTips from "./MusicTips";
-
 class MusicButton extends ControlbarButton {
-  constructor() {
+  constructor(container) {
     super();
-    this.initHtmlDisplay('<a class="ya-music-btn"></a>');
+    this._id_ = "ya-music-btn";
+    this.initHtmlDisplay('<a class="' + this._id_ + '"></a>');
+    this._tips_ = new MusicTips();
+    container.append(this, this._tips_);
+    this._addEvent_();
   }
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._initVo_ = vo.value;
-        this._init();
-        break;
-      default:
+        this._status_ = vo.value;
         break;
     }
   }
-  _init() {
-    this.updateState();
-    this._addEvent_();
-    var tips = new MusicTips();
-    this.setTips(tips);
-    tips.setVo({ type: "init", value: this._initVo_["value"] });
-  }
 }
+MusicButton.Change = "MusicButton.Change";
 export default MusicButton;

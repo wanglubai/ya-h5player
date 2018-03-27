@@ -27,6 +27,9 @@ class ConfigModel extends BaseModel {
     var animation = { id: "animation", value: 0, type: 1 };
     var rotate = { id: "rotate", value: 0, type: 1 };
     var screen = { id: "screen", value: 0, type: 1 };
+    var refresh = { id: "refresh", value: 0, type: 1 };
+    var danmaku = { id: "danmaku", value: 0, type: 1 };
+    var set = { id: "set", value: 0, type: 1 };
     this._controlbarBtnConfig.push(
       play,
       screen,
@@ -34,7 +37,10 @@ class ConfigModel extends BaseModel {
       bullet,
       sharpness,
       animation,
-      rotate
+      rotate,
+      refresh,
+      danmaku,
+      set
     );
   }
 

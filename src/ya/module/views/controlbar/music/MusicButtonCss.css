@@ -1,0 +1,19 @@
+.ya-music-btn {
+  float: right;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("./../../../../../res/button/music.png");
+  margin-right: 25px;
+  margin-top: 11px;
+}
+.ya-music-btn:hover {
+  background-image: url("./../../../../../res/button/musichover.png");
+}
+.ya-music-btn1 {
+  background-image: url("./../../../../../res/button/music1.png");
+}
+.ya-music-btn1:hover {
+  background-image: url("./../../../../../res/button/music1hover.png");
+}

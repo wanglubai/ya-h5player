@@ -1,0 +1,12 @@
+.ya-refresh-btn {
+  float: left;
+  width: 18px;
+  height: 16px;
+  cursor: pointer;
+  background-image: url("./../../../../../res/button/refresh.png");
+  margin-left: 25px;
+  margin-top: 12px;
+}
+.ya-refresh-btn:hover {
+  background-image: url("./../../../../../res/button/refreshhover.png");
+}
