@@ -1,19 +1,16 @@
 import BaseTips from "./BaseTips";
 
-import "./DispatcherCss.css";
+import "./DescribeTipsCss.css";
 import LayerManager from "../module/managers/LayerManager";
 
 class DescribeTips extends BaseTips {
   constructor() {
     super();
-    this.initDivDisplay("describe-tips");
+    this.initHtmlDisplay('<div class="ya-describe-tips"></div>');
     this._describe = null;
   }
   _dealVo_(vo) {
     switch (vo.type) {
-      case "yparent":
-        this._yparent = vo.value;
-        break;
       case DescribeTips.Type_Describe:
         this._describe = vo.value;
         this._updateDescribe();

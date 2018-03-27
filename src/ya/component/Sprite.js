@@ -31,7 +31,7 @@ class Sprite extends EventDispatcher {
   $position() {
     return this._display.position();
   }
-  $find(){
+  $find() {
     return this._display.find(arguments[0]);
   }
   attr() {
@@ -101,7 +101,7 @@ class Sprite extends EventDispatcher {
   }
   get cacheWidth() {
     if (!this._width) {
-      this._width = this._display.width();
+      this._width = this._display.outerWidth();
     }
     return this._width;
   }

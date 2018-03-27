@@ -1,0 +1,25 @@
+.ya-screen-btn {
+  float: right;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background: url("./../../../../../res/button/screen.png");
+  margin-right: 12px;
+  margin-top: 11px;
+  border: 1px solid #ff0000;
+}
+.ya-screen-btn:hover {
+  width: 20px;
+  height: 20px;
+  background: url("./../../../../../res/button/screenhover.png");
+}
+.ya-screen-btn1 {
+  width: 20px;
+  height: 20px;
+  background: url("./../../../../../res/button/screen1.png");
+}
+.ya-screen-btn1:hover {
+  width: 20px;
+  height: 20px;
+  background: url("./../../../../../res/button/screen1hover.png");
+}

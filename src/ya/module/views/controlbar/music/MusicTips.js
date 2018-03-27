@@ -19,12 +19,11 @@ class MusicTips extends CountTips {
     this._y = 0;
   }
   _init() {
-
     this._updateView();
   }
   _dealVo_(vo) {
     switch (vo.type) {
-      case 'init':
+      case "init":
         this._proBgHeight = this.$find(".ya-music-tips-probg").height();
         this.volume = vo.value;
         this._init();

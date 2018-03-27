@@ -9,6 +9,8 @@ import Dispatcher from "../../../component/Dispatcher";
 import DescribeTips from "../../../component/DescribeTips";
 import MusicTips from "./music/MusicTips";
 import SharpnessButton from "./sharpness/SharpnessButton";
+import PlayButton from "./play/PlayButton";
+import ScreenButton from "./screen/ScreenButton";
 
 class ControlbarView extends Sprite {
   constructor() {
@@ -19,25 +21,18 @@ class ControlbarView extends Sprite {
   }
   _dealVo_(vo) {
     if (vo.type == "init") {
-      // for (var i = 0; i < vo.list.length; i++) {
-      //   var button = new ControlbarButton();
-      //   if (vo.list[i].id == "music") {
-      //     var tips=new MusicTips();
-      //   } else {
-      //     var tips = new DescribeTips();
-      //     tips.setVo({ type: DescribeTips.Type_Describe, value: "aa" });
-      //   }
-      //   button.setTips(tips);
-      //   this.append(tips);
-      //   tips.init();
-      //   button.setVo({ type: "init", init: vo.list[i] });
-      //   this.append(button);
-      //   this._btnList[vo.list[i].id] = button;
-      //   button.on(ControlbarButton.ButtonClick, this.eventFun.bind(this));
-      // }
-      var i = new SharpnessButton();
-      LayerManager.BarLayer.append(i);
-      i.setVo({ type: "init", value: [1,2,3,3] });
+      var vos = vo.list;
+      for (var i = 0; i < vos.length; i++) {
+        var btnVo = vos[i];
+        var btn;
+        if (btnVo.id == "play") {
+          btn = new PlayButton(this);
+          btn.setVo({ type: "init", value: 0 });
+        } else if (btnVo.id == "screen") {
+          btn = new ScreenButton(this);
+          btn.setVo({ type: "init", value: 0 });
+        }
+      }
     }
   }
   eventFun(e) {

@@ -39,7 +39,6 @@ class BarController extends BaseController {
     this._controlbarView.on("", this.controlbarViewEvent);
     // new MusicTips();
     // new DanmakuTips();
-
   }
 }
 export default new BarController();

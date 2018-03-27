@@ -6,7 +6,7 @@
   position: absolute;
 }
 
-.ya-screen-btn {
+/* .ya-screen-btn {
   cursor: pointer;
   width: 26px;
   height: 26px;
@@ -131,4 +131,4 @@
 }
 .ya-bullet-btn1:hover {
   background: url("../../../../res/button/bullet1_over.png");
-}
+} */

@@ -1,0 +1,12 @@
+.ya-describe-tips {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  color: #999999;
+  z-index: 3;
+  display: none;
+  padding: 5px 6px;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 14px;
+  border: 1px solid #ff0000;
+}

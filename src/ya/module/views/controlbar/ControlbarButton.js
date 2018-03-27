@@ -3,34 +3,21 @@ import Sprite from "../../../component/Sprite";
 class ControlbarButton extends Sprite {
   constructor() {
     super();
-    this._initVo_ = null;
+    this._id_ = null;
+    this._status_ = 0;
     this._tips_ = null;
-    this._parent = null;
-  }
-  _dealVo_(vo) {
-    if (vo["type"] == "init") {
-      this._initVo_ = vo["value"];
-      this._init();
-    }
-  }
-  _init() {
-    this.initHtmlDisplay('<a class="ya-button ya-' + this._initVo_.id + '-btn></a>');
-    this.updateState();
-    this._addEvent_();
-  }
-  setTips(tips) {
-    this._tips_ = tips;
-    this.yparent.append(this._tips_);
-    this.$on("mouseenter", this._tips_Event.bind(this));
-    this.$on("mouseleave", this._tips_Event.bind(this));
+    this._type_ = 0;
   }
   _addEvent_() {
     this.$on("click", this._eventFun.bind(this));
+    this.$on("mouseenter", this._tips_Event.bind(this));
+    this.$on("mouseleave", this._tips_Event.bind(this));
   }
   _tips_Event(e) {
+    if (!this._tips_) return;
     switch (e.type) {
       case "mouseenter":
-        this._showTips();
+        this._showTips(e);
         break;
       case "mouseleave":
         this._hideTips();
@@ -38,8 +25,8 @@ class ControlbarButton extends Sprite {
     }
   }
   _showTips(e) {
-    var x = this.$position()["left"] + this.cacheWidth / 2;
-    var y = this.$position()["top"];
+    var x = e.currentTarget.offsetLeft + this.cacheWidth / 2;
+    var y = -16;
     this._tips_ && this._tips_.setShowPosition(x, y);
   }
   _hideTips() {
@@ -47,24 +34,26 @@ class ControlbarButton extends Sprite {
   }
   _eventFun(e) {
     if (e.type == "click") {
-      this._initVo_["value"] = this._initVo_["value"] == 0 ? 1 : 0;
-      this.updateState();
-      this.emit({ type: ControlbarButton.ButtonClick, vo: this._initVo_ });
+      this._status_ = this._status_ == 0 ? 1 : 0;
+      this._updateState_();
     }
   }
-  updateState() {
-    if (this._initVo_["value"] == 0) {
-      this.removeClass("ya-" + this._initVo_.id + "-btn1");
-    } else {
-      this.addClass("ya-" + this._initVo_.id + "-btn1");
+  _updateState_() {
+    this._updateStateClass_();
+  }
+  _updateStateClass_() {
+    if (this._type_ == 0) {
+      if (this._status_ == 0) {
+        this.removeClass(this._id_ + "1");
+      } else {
+        this.addClass(this._id_ + "1");
+      }
     }
   }
   _removeEvent_() {
     this.display.off("click");
-    if (this._tips_) {
-      this.display.off("mouseenter");
-      this.display.off("mouseleave");
-    }
+    this.display.off("mouseenter");
+    this.display.off("mouseleave");
   }
   destory() {
     super.destory();
@@ -74,5 +63,4 @@ class ControlbarButton extends Sprite {
     }
   }
 }
-ControlbarButton.ButtonClick = "ControlbarButtonEvent.ButtonClick";
 export default ControlbarButton;
