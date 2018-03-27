@@ -32,11 +32,9 @@ class BarController extends BaseController {
     }
     this._controlbarView.setVo({
       type: "init",
-      list: ConfigModel.controlbarBtnConfig
+      value: ConfigModel.controlbarBtnConfig
     });
     this._controlbarView.on("", this.controlbarViewEvent);
-    // new MusicTips();
-    // new DanmakuTips();
   }
 }
 export default new BarController();

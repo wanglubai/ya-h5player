@@ -8,6 +8,7 @@ import EventType from "../../../component/EventType";
 import Dispatcher from "../../../component/Dispatcher";
 import DescribeTips from "../../../component/DescribeTips";
 import MusicTips from "./music/MusicTips";
+import MusicButton from "./music/MusicButton";
 
 class ControlbarView extends Sprite {
   constructor() {
@@ -18,21 +19,32 @@ class ControlbarView extends Sprite {
   }
   _dealVo_(vo) {
     if (vo.type == "init") {
-      for (var i = 0; i < vo.list.length; i++) {
-        var button = new ControlbarButton();
-        if (vo.list[i].id == "music") {
-          var tips=new MusicTips();
-        } else {
-          var tips = new DescribeTips();
-          tips.setVo({ type: DescribeTips.Type_Describe, value: "aa" });
-        }
-        button.setTips(tips);
-        this.append(tips);
-        tips.init();
-        button.setVo({ type: "init", init: vo.list[i] });
-        this.append(button);
-        this._btnList[vo.list[i].id] = button;
-        button.on(ControlbarButton.ButtonClick, this.eventFun.bind(this));
+      this._initList(vo.value);
+      // for (var i = 0; i < vo.list.length; i++) {
+      //   var button = new ControlbarButton();
+      //   if (vo.list[i].id == "music") {
+      //     var tips=new MusicTips();
+      //   } else {
+      //     var tips = new DescribeTips();
+      //     tips.setVo({ type: DescribeTips.Type_Describe, value: "aa" });
+      //   }
+      //   button.setTips(tips);
+      //   this.append(tips);
+      //   tips.init();
+      //   button.setVo({ type: "init", init: vo.list[i] });
+      //   this.append(button);
+      //   this._btnList[vo.list[i].id] = button;
+      //   button.on(ControlbarButton.ButtonClick, this.eventFun.bind(this));
+      // }
+    }
+  }
+  _initList(vos) {
+    for (var i = 0; i < vos.length; i++) {
+      if (vos[i].id == "music") {
+        var musicBtn = new MusicButton();
+        this.append(musicBtn);
+        musicBtn.setVo({ 'type': 'init', 'value': vos[i] });
+        this._btnList['music'] = musicBtn;
       }
     }
   }
