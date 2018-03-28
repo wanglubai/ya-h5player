@@ -28,6 +28,10 @@ class MusicTips extends CountTips {
         this.volume = vo.value;
         this._init();
         break;
+        case 'change':
+        this.volume=vo.value;
+        this._updateView();
+        break;
     }
   }
   _addEvent_() {
@@ -46,7 +50,6 @@ class MusicTips extends CountTips {
         this._volume = parseInt((1 - this._y / this._proBgHeight) * 100);
         this._updateView();
         this.emit({ type: MusicTips.Value_Change, value: this._volume });
-        this.emit({ type: MusicTips.Value_Lazy_Change, value: this._volume });
         break;
       case "hitStart":
         this._startClickY = e.clientY;
@@ -69,7 +72,7 @@ class MusicTips extends CountTips {
         break;
       case "documentUp":
         this._documentOff();
-        this.emit({ type: MusicTips.Value_Lazy_Change, value: this._volume });
+        this.emit({ type: MusicTips.Value_Change, value: this._volume });
         break;
     }
   }
@@ -101,5 +104,4 @@ class MusicTips extends CountTips {
   }
 }
 MusicTips.Value_Change = "MusicTips.Value_Change";
-MusicTips.Value_Lazy_Change = "MusicTips.Value_Lazy_Change";
 export default MusicTips;
