@@ -14,7 +14,7 @@ class DanmakuButton extends ControlbarButton {
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._status_ = vo.value;
+        this._status_ = vo.value["default"];
         this._updateView();
         break;
     }
@@ -36,6 +36,14 @@ class DanmakuButton extends ControlbarButton {
       });
     }
   }
+  _clickCall_() {
+    if (this._status_ == 0) {
+      this.emit(DanmakuButton.Open);
+    } else {
+      this.emit(DanmakuButton.Close);
+    }
+  }
 }
-DanmakuButton.Change = "DanmakuButton.Change";
+DanmakuButton.Open = "DanmakuButton.Open";
+DanmakuButton.Close = "DanmakuButton.Close";
 export default DanmakuButton;

@@ -16,12 +16,20 @@ import RefreshButton from "./refresh/RefreshButton";
 import DanmakuButton from "./danmaku/DanmakuButton";
 import MusicButton from "./music/MusicButton";
 import SetButton from "./set/SetButton";
+import ConfigModel from "../../models/ConfigModel";
 
 class ControlbarView extends Sprite {
   constructor() {
     super();
     this.initHtmlDisplay('<div class="ya-controlbar-view"></div>');
-    this._btnList = {};
+    this._playBtn = null;
+    this._screenBtn = null;
+    this._refreshBtn = null;
+    this._rotateBtn = null;
+    this._danmakuBtn = null;
+    this._musicBtn = null;
+    this._setBtn = null;
+    this._model = ConfigModel;
     LayerManager.BarLayer.append(this);
   }
   _dealVo_(vo) {
@@ -31,28 +39,83 @@ class ControlbarView extends Sprite {
         var btnVo = vos[i];
         var btn;
         if (btnVo.id == "play") {
-          btn = new PlayButton(this);
-          btn.setVo({ type: "init", value: 0 });
+          this._playBtn = new PlayButton(this);
+          this._playBtn.setVo({ type: "init", value: btnVo });
         } else if (btnVo.id == "screen") {
-          btn = new ScreenButton(this);
-          btn.setVo({ type: "init", value: 0 });
+          this._screenBtn = new ScreenButton(this);
+          this._screenBtn.setVo({ type: "init", value: btnVo });
         } else if (btnVo.id == "rotate") {
-          btn = new RotateButton(this);
-          btn.setVo({ type: "init", value: 0 });
+          this._rotateBtn = new RotateButton(this);
+          this._rotateBtn.setVo({ type: "init", value: btnVo });
         } else if (btnVo.id == "refresh") {
-          btn = new RefreshButton(this);
-          btn.setVo({ type: "init", value: 0 });
+          this._refreshBtn = new RefreshButton(this);
+          this._refreshBtn.setVo({ type: "init", value: btnVo });
         } else if (btnVo.id == "danmaku") {
-          btn = new DanmakuButton(this);
-          btn.setVo({ type: "init", value: 0 });
+          this._danmakuBtn = new DanmakuButton(this);
+          this._danmakuBtn.setVo({ type: "init", value: btnVo });
         } else if (btnVo.id == "music") {
-          btn = new MusicButton(this);
-          btn.setVo({ type: "init", value: 0 });
+          this._musicBtn = new MusicButton(this);
+          this._musicBtn.setVo({ type: "init", value: btnVo });
         } else if (btnVo.id == "set") {
-          btn = new SetButton(this);
-          btn.setVo({ type: "init", value: 0 });
+          this._setBtn = new SetButton(this);
+          this._setBtn.setVo({ type: "init", value: btnVo });
         }
       }
+      this._addEvent_();
+    }
+  }
+  _addEvent_() {
+    if (this._playBtn) {
+      this._playBtn.ons(
+        PlayButton.Play,
+        PlayButton.Pause,
+        this._eventFun.bind(this)
+      );
+    }
+    if (this._screenBtn) {
+      this._screenBtn.ons(
+        ScreenButton.Normal,
+        ScreenButton.Full,
+        this._eventFun.bind(this)
+      );
+    }
+    if (this._refreshBtn) {
+      this._refreshBtn.ons(RefreshButton.Change, this._eventFun.bind(this));
+    }
+    if (this._rotateBtn) {
+      this._rotateBtn.ons(RotateButton.Change, this._eventFun.bind(this));
+    }
+    if (this._danmakuBtn) {
+      this._danmakuBtn.ons(
+        DanmakuButton.Open,
+        DanmakuButton.Close,
+        this._eventFun.bind(this)
+      );
+    }
+  }
+  _eventFun(e) {
+    console.log(e.type);
+    switch (e.type) {
+      case PlayButton.Play:
+        this._model.setPlayByUi();
+        break;
+      case PlayButton.Pause:
+        this._model.setPauseByUi();
+        break;
+      case ScreenButton.Normal:
+        this._model.setNormalScreenByUi();
+        break;
+      case ScreenButton.Full:
+        this._model.setFullScreenByUi();
+        break;
+      case RefreshButton.Change:
+        break;
+      case DanmakuButton.Open:
+        this._model.setOpenDanmakuByUi();
+        break;
+      case DanmakuButton.Close:
+        this._model.setCloseDanmakuByUi();
+        break;
     }
   }
   eventFun(e) {

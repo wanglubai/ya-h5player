@@ -5,16 +5,18 @@ import Dispatcher from "./ya/component/Dispatcher";
 import EventType from "./ya/component/EventType";
 import SingleController from "./ya/module/controllers/SingleController";
 import LayerManager from "./ya/module/managers/LayerManager";
+import ConfigModel from "./ya/module/models/ConfigModel";
+import ModelEvent from "./ya/module/models/ModelEvent";
 
 class Player extends Sprite {
   constructor(vo) {
     super();
     this._vo = vo;
+    this._model = ConfigModel;
     this.initDivDisplay("player");
     this.appendToById(this._vo["container"]);
     this.init();
     this._addEvent_();
-
   }
   init() {
     LayerManager.init(this);
@@ -22,16 +24,19 @@ class Player extends Sprite {
     Dispatcher.emit(EventType.InnerInit);
   }
   _addEvent_() {
-    Dispatcher.on(EventType.UiFullScreen, e => this.evetFun(e));
-    Dispatcher.on(EventType.UiExitFullScreen, e => this.evetFun(e));
+    this._model.ons(
+      ModelEvent.FullScreenByUi,
+      ModelEvent.NormalScreenByUi,
+      this._evetFun.bind(this)
+    );
   }
-  evetFun(e) {
+  _evetFun(e) {
     switch (e.type) {
-      case EventType.UiFullScreen:
-        this._fullScreen();
-        break;
-      case EventType.UiExitFullScreen:
+      case ModelEvent.NormalScreenByUi:
         this._exitFullScreen();
+        break;
+      case ModelEvent.FullScreenByUi:
+        this._fullScreen();
         break;
     }
   }

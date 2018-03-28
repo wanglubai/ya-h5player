@@ -19,7 +19,7 @@ class RefreshButton extends ControlbarButton {
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._status_ = vo.value;
+        this._status_ = vo.value["default"];
         this._updateView();
         break;
     }
@@ -30,5 +30,9 @@ class RefreshButton extends ControlbarButton {
   _updateState_() {
     super._updateState_();
   }
+  _clickCall_(){
+    this.emit(RefreshButton.Change);
+  }
 }
+RefreshButton.Change='RefreshButton.Change';
 export default RefreshButton;

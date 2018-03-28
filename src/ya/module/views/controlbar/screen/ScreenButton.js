@@ -1,6 +1,6 @@
 import ControlbarButton from "../ControlbarButton";
 import DescribeTips from "../../../../component/DescribeTips";
-import './ScreenButtonCss.css';
+import "./ScreenButtonCss.css";
 class ScreenButton extends ControlbarButton {
   constructor(container) {
     super();
@@ -13,7 +13,7 @@ class ScreenButton extends ControlbarButton {
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._status_ = vo.value;
+        this._status_ = vo.value["default"];
         this._updateView();
         break;
     }
@@ -29,5 +29,14 @@ class ScreenButton extends ControlbarButton {
       this._tips_.setVo({ type: DescribeTips.Type_Describe, value: "退出" });
     }
   }
+  _clickCall_() {
+    if (this._status_ == 0) {
+      this.emit(ScreenButton.Normal);
+    } else {
+      this.emit(ScreenButton.Full);
+    }
+  }
 }
+ScreenButton.Normal = "ScreenButton.Normal";
+ScreenButton.Full = "ScreenButton.Full";
 export default ScreenButton;

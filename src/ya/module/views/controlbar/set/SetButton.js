@@ -15,7 +15,7 @@ class SetButton extends ControlbarButton {
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._status_ = vo.value;
+        this._status_ = vo.value["default"];
         this._updateView();
         break;
     }

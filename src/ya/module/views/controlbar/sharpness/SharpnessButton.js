@@ -11,7 +11,7 @@ class SharpnessButton extends ControlbarButton {
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._yvo = vo.value;
+        this._yvo = vo.value["default"];
         this._init();
         break;
     }

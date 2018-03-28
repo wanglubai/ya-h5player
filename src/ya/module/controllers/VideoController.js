@@ -8,6 +8,8 @@ import LayerManage from "../managers/LayerManager";
 import FlvVideo from "../views/video/FlvVideo";
 import VideoView from "../views/video/VideoView";
 import Debug from "../../component/Debug";
+import ConfigModel from "../models/ConfigModel";
+import ModelEvent from "../models/ModelEvent";
 
 class VideoController extends BaseController {
   constructor() {
@@ -23,9 +25,24 @@ class VideoController extends BaseController {
       EventType.DataPlay,
       this.eventFun.bind(this)
     );
+    ConfigModel.ons(
+      ModelEvent.PlayByUi,
+      ModelEvent.PauseByUi,
+      this._eventFun.bind(this)
+    );
   }
   init() {
     this._addEvent_();
+  }
+  _eventFun(e) {
+    switch (e.type) {
+      case ModelEvent.PlayByUi:
+        this._videoPlay();
+        break;
+      case ModelEvent.PauseByUi:
+        this._videoPause();
+        break;
+    }
   }
   eventFun(e) {
     switch (e.type) {

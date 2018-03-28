@@ -14,7 +14,7 @@ class PlayButton extends ControlbarButton {
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._status_ = vo.value;
+        this._status_ = vo.value["default"];
         this._updateView();
         break;
     }
@@ -30,6 +30,14 @@ class PlayButton extends ControlbarButton {
       this._tips_.setVo({ type: DescribeTips.Type_Describe, value: "暂停" });
     }
   }
+  _clickCall_() {
+    if (this._status_ == 0) {
+      this.emit(PlayButton.Play);
+    } else {
+      this.emit(PlayButton.Pause);
+    }
+  }
 }
-PlayButton.Change = "PlayButton.Change";
+PlayButton.Play = "PlayButton.Play";
+PlayButton.Pause = "PlayButton.Pause";
 export default PlayButton;

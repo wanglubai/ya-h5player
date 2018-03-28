@@ -1,5 +1,5 @@
 import ControlbarButton from "../ControlbarButton";
-import './MusicButtonCss.css'
+import "./MusicButtonCss.css";
 import MusicTips from "./MusicTips";
 class MusicButton extends ControlbarButton {
   constructor(container) {
@@ -13,7 +13,7 @@ class MusicButton extends ControlbarButton {
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._status_ = vo.value;
+        this._status_ = vo.value["default"];
         break;
     }
   }

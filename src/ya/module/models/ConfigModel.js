@@ -1,4 +1,5 @@
 import BaseModel from "./BaseModel";
+import ModelEvent from "./ModelEvent";
 
 class ConfigModel extends BaseModel {
   constructor() {
@@ -20,16 +21,16 @@ class ConfigModel extends BaseModel {
   }
   addEvent() {}
   initControlbarBtn() {
-    var play = { id: "play", value: 0, type: 1 };
-    var music = { id: "music", value: 0, type: 1 };
-    var bullet = { id: "bullet", value: 0, type: 1 };
-    var sharpness = { id: "sharpness", value: 0, type: 1 };
-    var animation = { id: "animation", value: 0, type: 1 };
-    var rotate = { id: "rotate", value: 0, type: 1 };
-    var screen = { id: "screen", value: 0, type: 1 };
-    var refresh = { id: "refresh", value: 0, type: 1 };
-    var danmaku = { id: "danmaku", value: 0, type: 1 };
-    var set = { id: "set", value: 0, type: 1 };
+    var play = { id: "play", default: 0 };
+    var music = { id: "music", default: this.musicVal };
+    var bullet = { id: "bullet", default: 0 };
+    var sharpness = { id: "sharpness", default: 0 };
+    var animation = { id: "animation", default: 0 };
+    var rotate = { id: "rotate", default: 0 };
+    var screen = { id: "screen", default: 0 };
+    var refresh = { id: "refresh", default: 0 };
+    var danmaku = { id: "danmaku", default: this.bulletVisible };
+    var set = { id: "set", default: 0 };
     this._controlbarBtnConfig.push(
       play,
       screen,
@@ -42,6 +43,27 @@ class ConfigModel extends BaseModel {
       danmaku,
       set
     );
+  }
+
+  setPlayByUi() {
+    this.emit(ModelEvent.PlayByUi);
+  }
+  setPauseByUi() {
+    this.emit(ModelEvent.PauseByUi);
+  }
+  setFullScreenByUi() {
+    this.emit(ModelEvent.FullScreenByUi);
+  }
+  setNormalScreenByUi() {
+    this.emit(ModelEvent.NormalScreenByUi);
+  }
+  setOpenDanmakuByUi() {
+    this.bulletVisible = 0;
+    this.emit(ModelEvent.OpenDanmakuByUi);
+  }
+  setCloseDanmakuByUi() {
+    this.bulletVisible = 1;
+    this.emit(ModelEvent.CloseDanmakuByUi);
   }
 
   initBarStorage() {

@@ -1,5 +1,5 @@
 import ControlbarButton from "../ControlbarButton";
-import './RotateButtonCss.css';
+import "./RotateButtonCss.css";
 import DescribeTips from "../../../../component/DescribeTips";
 
 class RotateButton extends ControlbarButton {
@@ -14,7 +14,7 @@ class RotateButton extends ControlbarButton {
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._status_ = vo.value;
+        this._status_ = vo.value["default"];
         this._updateView();
         break;
     }
@@ -36,5 +36,9 @@ class RotateButton extends ControlbarButton {
       });
     }
   }
+  _clickCall_() {
+    this.emit(RotateButton.Change);
+  }
 }
+RotateButton.Change = "RotateButton.Change";
 export default RotateButton;

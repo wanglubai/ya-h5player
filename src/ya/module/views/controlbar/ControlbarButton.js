@@ -36,7 +36,11 @@ class ControlbarButton extends Sprite {
     if (e.type == "click") {
       this._status_ = this._status_ == 0 ? 1 : 0;
       this._updateState_();
+      this._clickCall_();
     }
+  }
+  _clickCall_(){
+
   }
   _updateState_() {
     this._updateStateClass_();
