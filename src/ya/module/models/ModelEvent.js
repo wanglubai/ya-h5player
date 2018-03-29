@@ -6,4 +6,5 @@ ModelEvent.FullScreenByUi = "ModelEvent.FullScreenByUi";
 ModelEvent.NormalScreenByUi = "ModelEvent.NormalScreenByUi";
 ModelEvent.OpenDanmakuByUi = "ModelEvent.OpenDanmakuByUi";
 ModelEvent.CloseDanmakuByUi = "ModelEvent.CloseDanmakuByUi";
+ModelEvent.ChangeVolumeByUi = "ModelEvent.ChangeVolumeByUi";
 export default ModelEvent;

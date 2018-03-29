@@ -92,6 +92,9 @@ class ControlbarView extends Sprite {
         this._eventFun.bind(this)
       );
     }
+    if (this._musicBtn) {
+      this._musicBtn.ons(MusicButton.Change, this._eventFun.bind(this));
+    }
   }
   _eventFun(e) {
     console.log(e.type);
@@ -115,6 +118,9 @@ class ControlbarView extends Sprite {
         break;
       case DanmakuButton.Close:
         this._model.setCloseDanmakuByUi();
+        break;
+        case MusicButton.Change:
+        this._model.setVolumeByUi(e.value);
         break;
     }
   }

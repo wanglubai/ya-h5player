@@ -65,6 +65,10 @@ class ConfigModel extends BaseModel {
     this.bulletVisible = 1;
     this.emit(ModelEvent.CloseDanmakuByUi);
   }
+  setVolumeByUi(val) {
+    this.musicVal = val;
+    this.emit(ModelEvent.ChangeVolumeByUi);
+  }
 
   initBarStorage() {
     if (this.localStorageHas("_giftVisible")) {
