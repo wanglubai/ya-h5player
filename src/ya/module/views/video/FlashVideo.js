@@ -1,7 +1,6 @@
 import BaseVideo from "./BaseVideo.js";
 import EventType from "../../../component/EventType.js";
 import LayerManager from "../../managers/LayerManager.js";
-import { debug } from "util";
 class FlashVideo extends BaseVideo {
   constructor() {
     super();
