@@ -15,11 +15,10 @@ class VideoController extends BaseController {
   constructor() {
     super();
     this._videoView = null;
+    this._model = ConfigModel;
   }
   _addEvent_() {
     Dispatcher.ons(
-      EventType.UiPlay,
-      EventType.UiPause,
       EventType.InnerInit,
       EventType.DataPause,
       EventType.DataPlay,
@@ -28,6 +27,7 @@ class VideoController extends BaseController {
     ConfigModel.ons(
       ModelEvent.PlayByUi,
       ModelEvent.PauseByUi,
+      ModelEvent.ChangeVolumeByUi,
       this._eventFun.bind(this)
     );
   }
@@ -42,6 +42,9 @@ class VideoController extends BaseController {
       case ModelEvent.PauseByUi:
         this._videoPause();
         break;
+      case ModelEvent.ChangeVolumeByUi:
+        this._changeVolume();
+        break;
     }
   }
   eventFun(e) {
@@ -50,11 +53,9 @@ class VideoController extends BaseController {
         this._initVideoView();
         break;
       case EventType.DataPlay:
-      case EventType.UiPlay:
         this._videoPlay();
         break;
       case EventType.DataPause:
-      case EventType.UiPause:
         this._videoPause();
         break;
       default:
@@ -68,10 +69,14 @@ class VideoController extends BaseController {
   _videoPlay() {
     this._videoView && this._videoView.play();
   }
+  _changeVolume() {
+    this._videoView &&
+      this._videoView.setVo({ type: "volume", value: this._model.volume });
+  }
   _initVideoView() {
     if (this._videoView == null) {
       this._videoView = new VideoView();
-      this._videoView.setVo({ type: "init" });
+      this._videoView.setVo({ type: "init", volume: this._model.volume });
       this._videoView.playUrl(
         "http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483"
       );

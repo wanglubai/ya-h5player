@@ -6,7 +6,7 @@ class ConfigModel extends BaseModel {
     super();
     this.platform = "longzhu";
     this._giftVisible = null;
-    this._musicVal = null;
+    this._volume = null;
     this._bulletAlpha = null;
     this._bulletType = null;
     this._bulletVisible = null;
@@ -22,7 +22,7 @@ class ConfigModel extends BaseModel {
   addEvent() {}
   initControlbarBtn() {
     var play = { id: "play", default: 0 };
-    var music = { id: "music", default: this.musicVal };
+    var music = { id: "music", default: this.volume };
     var bullet = { id: "bullet", default: 0 };
     var sharpness = { id: "sharpness", default: 0 };
     var animation = { id: "animation", default: 0 };
@@ -44,7 +44,7 @@ class ConfigModel extends BaseModel {
       set
     );
   }
-
+  //view call
   setPlayByUi() {
     this.emit(ModelEvent.PlayByUi);
   }
@@ -66,7 +66,7 @@ class ConfigModel extends BaseModel {
     this.emit(ModelEvent.CloseDanmakuByUi);
   }
   setVolumeByUi(val) {
-    this.musicVal = val;
+    this.volume = val;
     this.emit(ModelEvent.ChangeVolumeByUi);
   }
 
@@ -76,10 +76,10 @@ class ConfigModel extends BaseModel {
     } else {
       this.giftVisible = 1;
     }
-    if (this.localStorageHas("_musicVal")) {
-      this._musicVal = this.getLocalStorage("_musicVal");
+    if (this.localStorageHas("_volume")) {
+      this._volume = this.getLocalStorage("_volume");
     } else {
-      this.musicVal = 40;
+      this.volume = 40;
     }
     if (this.localStorageHas("_bulletAlpha")) {
       this._bulletAlpha = this.getLocalStorage("_bulletAlpha");
@@ -127,12 +127,12 @@ class ConfigModel extends BaseModel {
     return this._giftVisible;
   }
 
-  set musicVal(val) {
-    this.setLocalStorage("_musicVal", arguments[0]);
-    this._musicVal = arguments[0];
+  set volume(val) {
+    this.setLocalStorage("_volume", arguments[0]);
+    this._volume = arguments[0];
   }
-  get musicVal() {
-    return this._musicVal;
+  get volume() {
+    return this._volume;
   }
 
   set bulletAlpha(val) {

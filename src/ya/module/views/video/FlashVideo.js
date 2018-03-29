@@ -39,7 +39,10 @@ class FlashVideo extends BaseVideo {
     } else if (vo.type == "pause") {
       this.display[0].flashVideoCall("pause");
     } else if (vo.type == "volume") {
-      this.display[0].flashVideoCall("volume", vo.value);
+      this.display[0].flashVideoCall(
+        "volume",
+        Math.min(1, Math.max(0, vo.value / 100))
+      );
     }
   }
 

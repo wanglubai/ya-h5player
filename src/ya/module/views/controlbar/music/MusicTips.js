@@ -5,11 +5,11 @@ class MusicTips extends CountTips {
   constructor() {
     super();
     var dom =
-      "<div class='ya-music-tips'>" +
+      "<div class='ya-music-tips'><div class='ya-music-tips-bg'></div>" +
       "<div class='ya-music-tips-container'>" +
       "<div class='ya-music-tips-probg'></div>" +
       "<div class='ya-music-tips-event'></div>" +
-      "<div class='ya-music-tips-btn-container'><div class='ya-music-tips-btn'><div class='ya-music-tips-describe'></div></div></div>" +
+      "<div class='ya-music-tips-btn-container'><div class='ya-music-tips-btn'><div class='ya-music-tips-btn-position'></div><div class='ya-music-tips-btn-bg'></div><div class='ya-music-tips-describe'></div></div></div>" +
       "</div></div>";
     this.initHtmlDisplay(dom);
     this._addEvent_();
@@ -28,8 +28,8 @@ class MusicTips extends CountTips {
         this.volume = vo.value;
         this._init();
         break;
-        case 'change':
-        this.volume=vo.value;
+      case "change":
+        this.volume = vo.value;
         this._updateView();
         break;
     }

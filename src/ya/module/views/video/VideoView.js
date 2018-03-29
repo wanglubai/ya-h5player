@@ -38,8 +38,14 @@ class VideoView extends EventDispatcher {
   }
 
   _dealVo_(vo) {
-    if (vo["type"] == "init") {
-      this._init();
+    switch (vo.type) {
+      case "init":
+        this._init();
+        this.volume(vo.volume);
+        break;
+      case "volume":
+        this.volume(vo.value);
+        break;
     }
   }
 
@@ -60,7 +66,7 @@ class VideoView extends EventDispatcher {
   }
 
   _initVideo() {
-    if (flvjs.isSupported()) {
+    if (!flvjs.isSupported()) {
       this._video = new FlvVideo();
     } else {
       this._video = new FlashVideo();
@@ -69,6 +75,9 @@ class VideoView extends EventDispatcher {
   _initVideoLogo() {
     this._videoLoad = new VideoLoad();
     this._videoLoad.setVo({ type: "init", init: this._conf });
+  }
+  volume(v) {
+    this._video.setCacheVo({ type: "volume", value: v });
   }
   playUrl(url) {
     this._video.setCacheVo({ type: "url", value: url });

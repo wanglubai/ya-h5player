@@ -18,7 +18,7 @@ class CountTips extends BaseTips {
     this._addCount();
   }
   _addCount() {
-    this._conut = setTimeout(this._hide.bind(this), 100);
+    this._conut = setTimeout(this._hide.bind(this), 1000);
   }
   _hide() {
     super.hide();

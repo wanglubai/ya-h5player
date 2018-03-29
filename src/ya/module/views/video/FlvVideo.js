@@ -25,6 +25,8 @@ class FlvVideo extends BaseVideo {
       this.display[0].play();
     } else if (vo.type == "pause") {
       this.display[0].pause();
+    } else if (vo.type == "volume") {
+      this.display[0].volume = Math.min(1, Math.max(0, vo.value / 100));
     }
   }
 
