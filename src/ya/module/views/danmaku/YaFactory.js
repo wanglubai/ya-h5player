@@ -1,28 +1,25 @@
-import YaDanmakuBase from "./YaDanmakuBase";
-import Base from "../../../component/Base";
+import YaDanmakuBase from './YaDanmakuBase';
 
-class YaFactory extends Base {
-  constructor() {
-    this._pool = [];
-    this._isDestory = false;
+function YaFactory() {
+  var tempThis = this;
+  tempThis._pool = [];
+  tempThis._isDestory=false;
+  tempThis.destory=function(){
+    tempThis._isDestory=true;
   }
-
-  destory() {
-    this._isDestory = true;
-  }
-
-  create() {
-    if (this._pool.length > 0) {
-      return this._pool.pop();
-    } else {
-      var item = new YaDanmakuBase();
+  
+  tempThis.create = function () {
+    // if (tempThis._pool.length > 0) {
+    //   return tempThis._pool.pop();
+    // } else {
+      var item = new YaDanmakuBase()
       return item;
-    }
+    // }
   }
 
-  recycle(ele) {
-    this._pool.push(ele);
+  tempThis.recycle = function (ele) {
+    tempThis._pool.push(ele);
   }
 }
 
-export default YaFactory;
+export default new YaFactory();

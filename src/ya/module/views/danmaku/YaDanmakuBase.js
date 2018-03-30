@@ -1,70 +1,62 @@
-import YaFactory from "./YaFactory";
-import Sprite from "../../../component/Sprite";
+import YaFactory from './YaFactory';
 
-class YaDanmakuBase extends Sprite {
-  constructor(vo) {
-    this._isDestroy = false;
-    this._canPush = false;
-    this._isInit = false;
-    this.initHtmlDisplay("<div></div>");
-  }
+function YaDanmakuBase(vo) {
+  var tempThis = this;
+  tempThis._isDestroy = false;
+  tempThis._canPush = false;
+  tempThis._isInit = false;
+  tempThis._vo = null;
+  tempThis._parent = null;
+  tempThis._display = $("<div></div>");
+  tempThis.play = function (vo) {
+    tempThis._isDestroy = false;
+    tempThis._canPush = false;
+    tempThis._isInit = false;
 
-  play(vo) {
-    this._isDestroy = false;
-    this._canPush = false;
-    this._isInit = false;
+    tempThis._vo = vo;
+    tempThis._speed = vo['speed'] ? vo['speed'] : 2 * Math.random() + 2.5;
+    tempThis._parent = vo['parent'];
 
-    this._vo = vo;
-    this._speed = vo["speed"] ? vo["speed"] : 2 * Math.random() + 2.5;
-    this._parent = vo["parent"];
+    tempThis._display[0].className = 'YaDanmakuBase';
+    //tempThis._display.removeAttr('style');
+    tempThis._display[0].style = '';
 
-    this._display[0].className = "YaDanmakuBase";
-    this._display[0].style = "";
+    vo['class'] && tempThis._display.addClass(vo['class']);
+    vo['style'] && tempThis._display.css(vo['style']);
+    tempThis._parent.append(tempThis._display);
+    tempThis._display.append(vo['msg']);
 
-    vo["class"] && this._display.addClass(vo["class"]);
-    vo["style"] && this._display.css(vo["style"]);
-    this._parent.append(this._display);
-    this._display.append(vo["msg"]);
+    tempThis._display.css('position', "absolute");
+    tempThis._display.css('top', vo['top'] + "px");
 
-    this._display.css("position", "absolute");
-    this._display.css("top", vo["top"] + "px");
+    tempThis._display.css('transform', "translateX(" + tempThis._parent.width() + "px");
 
-    this._display.css("transform", "translateX(" + this._parent.width() + "px");
-
-    var time = parseInt(
-      (this._parent.width() + this._display.width()) / this._speed / 24
-    );
-    this._display.css("transition", "transform " + time + "s linear");
-    this._display.one("transitionend", this.destroy);
-    setTimeout(function() {
-      this._isInit = true;
-      this._display.css(
-        "transform",
-        "translateX(" + -this._display.width() + "px)"
-      );
+    var time = parseInt((tempThis._parent.width() + tempThis._display.width()) / tempThis._speed / 24);
+    tempThis._display.css('transition', "transform " + time + "s linear");
+    tempThis._display.one('transitionend', tempThis.destroy);
+    setTimeout(function () {
+      tempThis._isInit = true;
+      tempThis._display.css('transform', 'translateX(' + -tempThis._display.width() + 'px)');
     }, 1);
   }
-  destroy() {
-    this._isDestroy = true;
-    this._display.empty();
-    this._display.removeAttr("class");
-    this._display[0].style = "";
-    YaFactory.recycle(this);
+  tempThis.destroy = function () {
+    tempThis._isDestroy = true;
+    tempThis._display.remove();
+    // tempThis._display.removeAttr('class');
+    // tempThis._display[0].style = '';
+    // YaFactory.recycle(tempThis);
   }
-  getSpeed() {
-    return this._speed;
+  tempThis.getSpeed = function () {
+    return tempThis._speed;
   }
-  canPush() {
-    if (this._isInit == false) {
+  tempThis.canPush = function () {
+    if (tempThis._isInit == false) {
       return false;
     }
-    if (this._canPush || this._isDestroy) {
+    if (tempThis._canPush || tempThis._isDestroy) {
       return true;
     }
-    if (
-      this._display.position().left <
-      this._parent.width() - this._display.width() - 20
-    ) {
+    if (tempThis._display.position().left < tempThis._parent.width() - tempThis._display.width() - 20) {
       return true;
     }
     return false;
