@@ -95,9 +95,11 @@ class ControlbarView extends Sprite {
     if (this._musicBtn) {
       this._musicBtn.ons(MusicButton.Change, this._eventFun.bind(this));
     }
+    if (this._setBtn) {
+      this._setBtn.ons(SetButton.Change, this._eventFun.bind(this));
+    }
   }
   _eventFun(e) {
-    console.log(e.type);
     switch (e.type) {
       case PlayButton.Play:
         this._model.setPlayByUi();
@@ -119,8 +121,21 @@ class ControlbarView extends Sprite {
       case DanmakuButton.Close:
         this._model.setCloseDanmakuByUi();
         break;
-        case MusicButton.Change:
+      case MusicButton.Change:
         this._model.setVolumeByUi(e.value);
+        break;
+      case SetButton.Change:
+        if (e.action == "alpha") {
+          this._model.setDanmakuAlphaByUi(e.value);
+        } else if (e.action == "type") {
+          this._model.setDanmakuTypeByUi(e.value);
+        } else if (e.action == "density") {
+          this._model.setDanmakuDensityByUi(e.value);
+        } else if (e.action == "animation") {
+          this._model.setAnimationVisibleByUi(e.value);
+        } else if (e.action == "car") {
+          this._model.setAnimationCarByUi(e.value);
+        }
         break;
     }
   }

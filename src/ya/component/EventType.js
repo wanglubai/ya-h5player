@@ -19,4 +19,8 @@ EventType.UiPlay = "EventType.UiPlay";
 EventType.UiPause = "EventType.UiPause";
 EventType.UiFullScreen = "EventType.UiFullScreen";
 EventType.UiExitFullScreen = "EventType.UiExitFullScreen";
+EventType.UiDensity = "EventType.UiDensity";
+EventType.UiAlpha = "EventType.UiAlpha";
+EventType.UiVisibleFull = "EventType.UiVisibleFull";
+EventType.UiVisibleCar = "EventType.UiVisibleCar";
 export default EventType;

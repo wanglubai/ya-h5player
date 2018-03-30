@@ -12,10 +12,55 @@ class SetButton extends ControlbarButton {
     container.append(this, this._tips_);
     this._addEvent_();
   }
+
+  _addEvent_() {
+    super._addEvent_();
+    if (this._tips_) {
+      this._tips_.ons(
+        SetTips.ChangeDensity,
+        SetTips.ChangeAlpha,
+        SetTips.ChangeAnimation,
+        SetTips.ChangeCar,
+        this._tipsCall.bind(this)
+      );
+    }
+  }
+  _tipsCall(e) {
+    switch (e.type) {
+      case SetTips.ChangeDensity:
+        this.emit({
+          type: SetButton.Change,
+          action: "density",
+          value: e.value
+        });
+        break;
+      case SetTips.ChangeAlpha:
+        this.emit({ type: SetButton.Change, action: "alpha", value: e.value });
+        break;
+      case SetTips.ChangeAnimation:
+      debugger
+        this.emit({
+          type: SetButton.Change,
+          action: "animation",
+          value: e.value
+        });
+        break;
+      case SetTips.ChangeCar:
+        this.emit({ type: SetButton.Change, action: "car", value: e.value });
+        break;
+    }
+  }
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
         this._status_ = vo.value["default"];
+        this._tips_.setVo({
+          type: "init",
+          density: vo.value["density"],
+          alpha: vo.value["alpha"],
+          animation: vo.value["animation"],
+          car: vo.value["car"]
+        });
         this._updateView();
         break;
     }
