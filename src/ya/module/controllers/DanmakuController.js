@@ -13,7 +13,12 @@ class DanmakuController extends BaseController {
   }
   _addEvent_() {
     Dispatcher.ons(EventType.InnerInit, this._eventFun.bind(this));
-    this._model.ons(ModelEvent.DanmakuAlphaByUi, ModelEvent.DanmakuTypeByUi, ModelEvent.DanmakuDensityByUi, this._eventFun.bind(this));
+    this._model.ons(
+      ModelEvent.DanmakuAlphaByUi,
+      ModelEvent.DanmakuLocationByUi,
+      ModelEvent.DanmakuDensityByUi,
+      this._eventFun.bind(this)
+    );
   }
   init() {
     this._addEvent_();
@@ -26,8 +31,8 @@ class DanmakuController extends BaseController {
       case ModelEvent.DanmakuAlphaByUi:
         this._setApha();
         break;
-      case ModelEvent.DanmakuTypeByUi:
-        this._setType();
+      case ModelEvent.DanmakuLocationByUi:
+        this._setLocation();
         break;
       case ModelEvent.DanmakuDensityByUi:
         this._setDensity();
@@ -38,28 +43,34 @@ class DanmakuController extends BaseController {
     }
   }
   _setApha() {
-    this._danmakuView.setVo({ 'type': 'alpha', 'value': this._model.danmakuAlpha });
+    this._danmakuView.setVo({ type: "alpha", value: this._model.danmakuAlpha });
   }
-  _setType() {
-    this._danmakuView.setVo({ 'type': 'type', 'value': this._model.danmakuType });
+  _setLocation() {
+    this._danmakuView.setVo({
+      type: "location",
+      value: this._model.danmakuLocation
+    });
   }
   _setDensity() {
-    this._danmakuView.setVo({ 'type': 'density', 'value': this._model.danmakuDensity });
+    this._danmakuView.setVo({
+      type: "density",
+      value: this._model.danmakuDensity
+    });
   }
   _initDanmakuView() {
     if (this._danmakuView == null) {
       this._danmakuView = new DanmakuView();
       var obj = {};
-      obj['alpha'] = this._model.danmakuAlpha;
-      obj['type'] = this._model.danmakuType;
-      obj['density'] = this._model.danmakuDensity;
-      obj['visible'] = this._model.danmakuVisible;
-      this._danmakuView.setVo({ 'type': 'init', 'value': obj })
+      obj["alpha"] = this._model.danmakuAlpha;
+      obj["location"] = this._model.danmakuLocation;
+      obj["density"] = this._model.danmakuDensity;
+      obj["visible"] = this._model.danmakuVisible;
+      this._danmakuView.setVo({ type: "init", value: obj });
     }
-    setInterval(this.addVo.bind(this), 100)
+    setInterval(this.addVo.bind(this), 100);
   }
   addVo() {
-    this._danmakuView.setVo({ 'type': 'add', 'value': { 'child': 'aasaaaaaaaaa' } })
+    this._danmakuView.setVo({ type: "add", value: { child: "aasaaaaaaaaa" } });
   }
 }
 export default new DanmakuController();

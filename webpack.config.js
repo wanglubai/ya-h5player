@@ -1,6 +1,6 @@
 var Webpack = require("webpack");
 var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const path = require('path');
+const path = require("path");
 var _rules = [];
 _rules.push({
   test: /\.css$/,
@@ -39,9 +39,5 @@ module.exports = {
     rules: _rules
   },
   plugins: [
-    new Webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    })
   ]
 };

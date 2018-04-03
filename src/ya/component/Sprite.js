@@ -1,5 +1,5 @@
 import EventDispatcher from "./EventDispatcher.js";
-import { debug } from "util";
+import $ from "webpack-zepto";
 class Sprite extends EventDispatcher {
   constructor() {
     super();
@@ -86,13 +86,13 @@ class Sprite extends EventDispatcher {
   $position() {
     return this._display.position();
   }
-  resizeFresh() { }
+  resizeFresh() {}
   destory() {
     super.destory();
   }
   get cacheWidth() {
     if (!this._width) {
-      this._width = this._display.outerWidth();
+      this._width = this._display.width();
     }
     return this._width;
   }

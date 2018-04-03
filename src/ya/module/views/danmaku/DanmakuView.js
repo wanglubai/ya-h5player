@@ -31,7 +31,7 @@ class DanmakuView extends Sprite {
       this._layerMax = 1;
     }
   }
-  _setType(type) {
+  _setLoaction(type) {
     if (type == 0) {
       this._endRatio = 1;
     } else if (type == 1) {
@@ -57,7 +57,7 @@ class DanmakuView extends Sprite {
       case 'init':
         this._isInit = true;
         this._setDensity(vo.value['density']);
-        this._setType(vo.value['type']);
+        this._setLoaction(vo.value['location']);
         this._setAlpha(vo.value['alpha']);
         this._init();
         break;
@@ -67,8 +67,8 @@ class DanmakuView extends Sprite {
       case 'density':
         this._setDensity(vo.value);
         break;
-      case 'type':
-        this._setType(vo.value);
+      case 'location':
+        this._setLoaction(vo.value);
         break;
       case 'alpha':
         this._setAlpha(vo.value);

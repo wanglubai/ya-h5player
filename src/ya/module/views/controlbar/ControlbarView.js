@@ -37,8 +37,8 @@ class ControlbarView extends Sprite {
     LayerManager.BarLayer.append(this);
   }
   moveShow() {
-    this.removeClass('ya-controlbar-view-hidedown');
-    this.addClass('ya-controlbar-view-showtop');
+    this.removeClass("ya-controlbar-view-hidedown");
+    this.addClass("ya-controlbar-view-showtop");
     this._resetConutDown();
   }
   _dealVo_(vo) {
@@ -68,15 +68,15 @@ class ControlbarView extends Sprite {
         } else if (btnVo.id == "set") {
           this._setBtn = new SetButton(this);
           this._setBtn.setVo({ type: "init", value: btnVo });
-        } else if (btnVo.id == 'sharpness') {
+        } else if (btnVo.id == "sharpness") {
           this._sharpnessBtn = new SharpnessButton(this);
-          this._sharpnessBtn.setVo({ type: 'init', value: btnVo });
+          this._sharpnessBtn.setVo({ type: "init", value: btnVo });
         }
       }
       this._init();
-    } else if (vo.type == 'sharpnessVos') {
+    } else if (vo.type == "sharpnessVos") {
       if (this._sharpnessBtn) {
-        this._sharpnessBtn.setVo({ 'type': 'sharpnessVos', 'value': vo.value });
+        this._sharpnessBtn.setVo({ type: "sharpnessVos", value: vo.value });
       }
     }
   }
@@ -90,8 +90,8 @@ class ControlbarView extends Sprite {
       this._coundDown = null;
     }
     this._coundDown = setTimeout(() => {
-      this.addClass('ya-controlbar-view-hidedown');
-      this.removeClass('ya-controlbar-view-showtop');
+      this.addClass("ya-controlbar-view-hidedown");
+      this.removeClass("ya-controlbar-view-showtop");
     }, 5000);
   }
 
@@ -169,6 +169,8 @@ class ControlbarView extends Sprite {
           this._model.setAnimationVisibleByUi(e.value);
         } else if (e.action == "car") {
           this._model.setAnimationCarByUi(e.value);
+        }else if (e.action == "location") {
+          this._model.setDanmakuLoactionByUi(e.value);
         }
         break;
       case SharpnessButton.Change:

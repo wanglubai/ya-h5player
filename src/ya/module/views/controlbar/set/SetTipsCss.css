@@ -19,6 +19,43 @@
   margin-left: 17px;
 }
 
+.ya-set-location0 {
+  width: 50px;
+  height: 48px;
+  background: url("../../../../../res/button/danmakutype0.png");
+  float: left;
+  margin-left: 17px;
+  cursor: pointer;
+  margin-top: -10px;
+}
+.ya-set-location0.active {
+  background: url("../../../../../res/button/danmakutype0active.png");
+}
+.ya-set-location1 {
+  width: 50px;
+  height: 48px;
+  margin-left: 12px;
+  float: left;
+  cursor: pointer;
+  margin-top: -10px;
+  background: url("../../../../../res/button/danmakutype1.png");
+}
+.ya-set-location1.active {
+  background: url("../../../../../res/button/danmakutype1active.png");
+}
+.ya-set-location2 {
+  width: 50px;
+  height: 48px;
+  margin-left: 12px;
+  margin-top: -10px;
+  cursor: pointer;
+  float: left;
+  background: url("../../../../../res/button/danmakutype2.png");
+}
+.ya-set-location2.active {
+  background: url("../../../../../res/button/danmakutype2active.png");
+}
+
 .ya-set-full,
 .ya-set-car {
   float: left;
@@ -44,12 +81,12 @@
 .ya-set-continer2 {
   height: 26px;
   line-height: 26px;
-  margin-top: 18px;
+  margin-top: 26px;
 }
 .ya-set-continer3 {
   height: 26px;
   line-height: 26px;
-  margin-top: 18px;
+  margin-top: 26px;
 }
 .ya-set-title3 {
   color: #999999;
@@ -73,12 +110,12 @@
 .ya-set-density-activate {
   border: 2px solid #ff8800;
   background-color: #ff8800;
-  color:#ffffff;
+  color: #ffffff;
 }
 .ya-set-common-activate {
   border: 2px solid #ff8800;
   background-color: #ff8800;
-  color:#ffffff;
+  color: #ffffff;
 }
 .ya-set-density0 {
   margin-left: 17px;

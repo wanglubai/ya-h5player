@@ -23,13 +23,12 @@ _rules.push({
   use: [
     {
       loader: "file-loader",
-      options: {
-      }
+      options: {}
     }
   ]
 });
 var webpackConfig = {
-  devtool:'eval-source-map',
+  devtool: "eval-source-map",
   entry: "./src/player.js",
   output: {
     path: __dirname,
@@ -38,12 +37,7 @@ var webpackConfig = {
   module: {
     rules: _rules
   },
-  plugins: [
-    new Webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    })
-  ]
+  plugins: []
 };
 var port = "8080";
 var compiler = Webpack(webpackConfig);

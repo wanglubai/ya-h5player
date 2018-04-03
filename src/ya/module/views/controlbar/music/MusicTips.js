@@ -1,6 +1,7 @@
 import "./MusicTipsCss.css";
 import CountTips from "../../../../component/CountTips";
 import LayerManager from "../../../managers/LayerManager";
+import $ from "webpack-zepto";
 class MusicTips extends CountTips {
   constructor() {
     super();
@@ -24,7 +25,7 @@ class MusicTips extends CountTips {
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._proBgHeight = this.$find(".ya-music-tips-probg").height();
+        this._proBgHeight = 120;
         this.volume = vo.value;
         this._init();
         break;

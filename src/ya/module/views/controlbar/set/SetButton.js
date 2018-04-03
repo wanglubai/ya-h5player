@@ -21,6 +21,7 @@ class SetButton extends ControlbarButton {
         SetTips.ChangeAlpha,
         SetTips.ChangeAnimation,
         SetTips.ChangeCar,
+        SetTips.ChangeLocation,
         this._tipsCall.bind(this)
       );
     }
@@ -38,7 +39,6 @@ class SetButton extends ControlbarButton {
         this.emit({ type: SetButton.Change, action: "alpha", value: e.value });
         break;
       case SetTips.ChangeAnimation:
-      debugger
         this.emit({
           type: SetButton.Change,
           action: "animation",
@@ -47,6 +47,13 @@ class SetButton extends ControlbarButton {
         break;
       case SetTips.ChangeCar:
         this.emit({ type: SetButton.Change, action: "car", value: e.value });
+        break;
+      case SetTips.ChangeLocation:
+        this.emit({
+          type: SetButton.Change,
+          action: "location",
+          value: e.value
+        });
         break;
     }
   }
@@ -59,7 +66,8 @@ class SetButton extends ControlbarButton {
           density: vo.value["density"],
           alpha: vo.value["alpha"],
           animation: vo.value["animation"],
-          car: vo.value["car"]
+          car: vo.value["car"],
+          location: vo.value["location"]
         });
         this._updateView();
         break;

@@ -10,16 +10,16 @@ class ControlbarButton extends Sprite {
   }
   _addEvent_() {
     this.$on("click", this._eventFun.bind(this));
-    this.$on("mouseenter", this._tips_Event.bind(this));
-    this.$on("mouseleave", this._tips_Event.bind(this));
+    this.$on("mouseover", this._tips_Event.bind(this));
+    this.$on("mouseout", this._tips_Event.bind(this));
   }
   _tips_Event(e) {
     if (!this._tips_) return;
     switch (e.type) {
-      case "mouseenter":
+      case "mouseover":
         this._showTips(e);
         break;
-      case "mouseleave":
+      case "mouseout":
         this._hideTips();
         break;
     }

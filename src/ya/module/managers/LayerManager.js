@@ -2,7 +2,7 @@ import EventDispatcher from "../../component/EventDispatcher";
 import Sprite from "../../component/Sprite";
 import Dispatcher from "../../component/Dispatcher";
 import EventType from "../../component/EventType";
-
+import $ from "webpack-zepto";
 class LayerManager extends EventDispatcher {
   constructor() {
     super();
@@ -26,12 +26,12 @@ class LayerManager extends EventDispatcher {
       this.GiftLayer,
       this.BarLayer
     );
-    this.TipsLayer.$appendTo($('body'));
+    this.TipsLayer.$appendTo($("body"));
     parent.$on("mousemove", this._eventFun.bind(this));
   }
   _eventFun(e) {
     switch (e.type) {
-      case 'mousemove':
+      case "mousemove":
         Dispatcher.emit(EventType.MouseMove);
         break;
     }

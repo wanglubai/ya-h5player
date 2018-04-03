@@ -7,6 +7,7 @@ import SingleController from "./ya/module/controllers/SingleController";
 import LayerManager from "./ya/module/managers/LayerManager";
 import ConfigModel from "./ya/module/models/ConfigModel";
 import ModelEvent from "./ya/module/models/ModelEvent";
+import flvjs from "./libs/flv/flv";
 
 class Player extends Sprite {
   constructor(vo) {

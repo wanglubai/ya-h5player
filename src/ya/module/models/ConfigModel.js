@@ -8,7 +8,7 @@ class ConfigModel extends BaseModel {
     this._giftVisible = null;
     this._volume = null;
     this._danmakuAlpha = null;
-    this._danmakuType = null;
+    this._danmakuLocation = null;
     this._danmakuDensity = null;
     this._danmakuVisible = null;
     this._animationVisible = null;
@@ -26,7 +26,7 @@ class ConfigModel extends BaseModel {
     this.initBarStorage();
     this.initControlbarBtn();
   }
-  addEvent() { }
+  addEvent() {}
   initControlbarBtn() {
     var play = { id: "play", default: 0 };
     var music = { id: "music", default: this.volume };
@@ -41,6 +41,7 @@ class ConfigModel extends BaseModel {
       default: 0,
       alpha: this.danmakuAlpha,
       density: this.danmakuDensity,
+      location: this.danmakuLocation,
       car: this.animationCar,
       animation: this.animationVisible
     };
@@ -57,13 +58,17 @@ class ConfigModel extends BaseModel {
     );
   }
   setSharpnessVosByAPi() {
-    var url = 'http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483'
-    this._sharpnessVos.push({ 'index': 0, 'title': '高清', 'status': 1, 'url': url });
-    this._sharpnessVos.push({ 'index': 1, 'title': '标清', 'status': 0, 'url': url });
-    this._sharpnessVos.push({ 'index': 2, 'title': '高清', 'status': 0, 'url': url });
-    this._sharpnessVos.push({ 'index': 3, 'title': '蓝光', 'status': 0, 'url': url });
+    var url =
+      "http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483";
+    this._sharpnessVos.push({ index: 0, title: "高清", status: 1, url: url });
+    this._sharpnessVos.push({ index: 1, title: "标清", status: 0, url: url });
+    this._sharpnessVos.push({ index: 2, title: "高清", status: 0, url: url });
+    this._sharpnessVos.push({ index: 3, title: "蓝光", status: 0, url: url });
     this._curSharpnessVo = this._sharpnessVos[0];
-    this.emit({ 'type': ModelEvent.SharpnessVosByApi, value: this._sharpnessVos });
+    this.emit({
+      type: ModelEvent.SharpnessVosByApi,
+      value: this._sharpnessVos
+    });
   }
   get sharpnessVos() {
     return this._sharpnessVos;
@@ -110,9 +115,9 @@ class ConfigModel extends BaseModel {
     this.danmakuAlpha = val;
     this.emit(ModelEvent.DanmakuAlphaByUi);
   }
-  setDanmakuTypeByUi(val) {
-    this.danmakuType = val;
-    this.emit(ModelEvent.DanmakuTypeByUi);
+  setDanmakuLoactionByUi(val) {
+    this.danmakuLocation = val;
+    this.emit(ModelEvent.DanmakuLocationByUi);
   }
   setDanmakuDensityByUi(val) {
     this.danmakuDensity = val;
@@ -147,10 +152,10 @@ class ConfigModel extends BaseModel {
     } else {
       this.danmakuDensity = 2;
     }
-    if (this.localStorageHas("_danmakuType")) {
-      this._danmakuType = this.getLocalStorage("_danmakuType");
+    if (this.localStorageHas("_danmakuLocation")) {
+      this._danmakuLocation = this.getLocalStorage("_danmakuLocation");
     } else {
-      this.danmakuType = 2;
+      this.danmakuLocation = 1;
     }
     if (this.localStorageHas("_danmakuVisible")) {
       this._danmakuVisible = this.getLocalStorage("_danmakuVisible");
@@ -230,12 +235,12 @@ class ConfigModel extends BaseModel {
     return this._danmakuAlpha;
   }
 
-  set danmakuType(val) {
-    this.setLocalStorage("_danmakuType", arguments[0]);
-    this._danmakuType = arguments[0];
+  set danmakuLocation(val) {
+    this.setLocalStorage("_danmakuLocation", arguments[0]);
+    this._danmakuLocation = arguments[0];
   }
-  get danmakuType() {
-    return this._danmakuType;
+  get danmakuLocation() {
+    return this._danmakuLocation;
   }
 
   set danmakuDensity(val) {
