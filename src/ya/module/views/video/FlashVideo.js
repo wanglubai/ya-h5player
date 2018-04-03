@@ -12,7 +12,7 @@ class FlashVideo extends BaseVideo {
     LayerManager.VideoLayer.append(this);
 
     var tempThis = this;
-    window["flashVideoCall"] = function() {
+    window["flashVideoCall"] = function () {
       var arr = [];
       for (var i = 0; i < arguments.length; i++) {
         arr.push(arguments[i]);
@@ -42,13 +42,18 @@ class FlashVideo extends BaseVideo {
         "volume",
         Math.min(1, Math.max(0, vo.value / 100))
       );
+    } else if (vo.type == 'sharpness') {
+      this._playVo(vo.value);
     }
+  }
+  _playVo(vo) {
+    this.display[0].flashVideoCall("url", vo.url);
   }
 
   destory() {
     super.destory();
   }
 
-  _removeEvent_() {}
+  _removeEvent_() { }
 }
 export default FlashVideo;
