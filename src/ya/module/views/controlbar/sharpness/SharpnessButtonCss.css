@@ -1,9 +1,18 @@
-.ya-sharpness-btn{
-    float: right;
-    width: 27px;
-    height: 22px;
-    cursor: pointer;
-    margin-right: 25px;
-    margin-top: 11px;
-    border: 1px solid #ff0000;
+.ya-sharpness-btn {
+  float: right;
+  width: 54px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 25px;
+  margin-top: 11px;
+  color: #999999;
+  background: #393939;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  border-radius:10px;
+}
+.ya-sharpness-btn:hover {
+  background: #ff8800;
+  color: #fff;
 }

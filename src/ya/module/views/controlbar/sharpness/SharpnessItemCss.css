@@ -3,10 +3,10 @@
   color: #999999;
   width: 40px;
   text-align: center;
+  margin-top: 17px;
   line-height: 16px;
   cursor: pointer;
   margin: 10px auto;
-  border: 1px solid #ff00ff;
 }
 
 .sharpness-item-statu1 {
@@ -15,5 +15,3 @@
 .sharpness-item-statu0 {
   color: #fff;
 }
-
-

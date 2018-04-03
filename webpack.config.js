@@ -38,6 +38,5 @@ module.exports = {
   module: {
     rules: _rules
   },
-  plugins: [
-  ]
+  plugins: []
 };
