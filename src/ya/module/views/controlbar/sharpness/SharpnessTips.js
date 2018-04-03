@@ -1,30 +1,33 @@
 import CountTips from "../../../../component/CountTips";
 import SharpnessItem from "./SharpnessItem";
 import SelecteGroup from "../../../../component/SelecteGroup";
-
+import './SharpnessTipsCss.css';
 class SharpnessTips extends CountTips {
   constructor() {
     super();
     this.initDivDisplay("sharpness-tips");
     this._group = null;
-    this._vos = null;
+    this._addEvent_();
   }
   _dealVo_(vo) {
     switch (vo.type) {
-      case "init":
-        this._vos = vo.value;
-        this._init();
+      case "sharpnessVos":
+        this.updateViewByVos(vo.value);
         break;
     }
   }
-  _init() {
+  updateViewByVos(vos) {
     this._group = new SelecteGroup();
     var item;
-    for (var i in this._vos) {
+    for (var i in vos) {
       item = new SharpnessItem();
-      item.setVo({ type: "init", value: this._vos[i] });
+      this.append(item);
       this._group.add(item);
+      item.setVo({ type: "init", value: vos[i] });
     }
+  }
+  updateIndex(index) {
+    this._group.setSelectedByIndex(index);
   }
   setSelectedIndex(value) {
     this._group.setSelectedByIndex(value);

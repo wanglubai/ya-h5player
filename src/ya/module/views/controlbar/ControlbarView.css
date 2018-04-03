@@ -5,130 +5,19 @@
   bottom: 0px;
   position: absolute;
 }
-
-/* .ya-screen-btn {
-  cursor: pointer;
-  width: 26px;
-  height: 26px;
-  margin-right: 8px;
-  margin-top: 8px;
-  float: right;
-  background: url("../../../../res/button/screen_normal.png");
+@keyframes yaControlbarViewhHidedown{
+from {bottom:0px;}
+to {bottom:-40px;}
 }
-.ya-screen-btn:hover {
-  background: url("../../../../res/button/screen_over.png");
+@keyframes yaControlbarViewShowtop{
+  from {bottom:-40px;}
+  to {bottom:0px;}
 }
-.ya-screen-btn1 {
-  background: url("../../../../res/button/screen1_normal.png");
+.ya-controlbar-view-hidedown{
+  animation:yaControlbarViewhHidedown 2s;
+  bottom:-40px;
 }
-.ya-screen-btn1:hover {
-  background: url("../../../../res/button/screen1_over.png");
+.ya-controlbar-view-showtop{
+  animation:yaControlbarViewShowtop 1s;
+  bottom:0px;
 }
-
-.ya-play-btn {
-  cursor: pointer;
-  width: 23px;
-  height: 25px;
-  margin-left: 8px;
-  margin-top: 8px;
-  float: left;
-  background: url("../../../../res/button/play_normal.png");
-}
-.ya-play-btn:hover {
-  background: url("../../../../res/button/play_over.png");
-}
-.ya-play-btn1 {
-  background: url("../../../../res/button/play1_normal.png");
-}
-.ya-play-btn1:hover {
-  background: url("../../../../res/button/play1_over.png");
-}
-
-.ya-sharpness-btn {
-  cursor: pointer;
-  width: 58px;
-  height: 28px;
-  margin-top: 6px;
-  margin-right: 8px;
-  float: right;
-  background: url("../../../../res/button/sharpness_normal.png");
-}
-.ya-sharpness-btn:hover {
-  background: url("../../../../res/button/sharpness_over.png");
-}
-.ya-sharpness-btn1 {
-  background: url("../../../../res/button/sharpness_normal.png");
-}
-.ya-sharpness-btn1:hover {
-  background: url("../../../../res/button/sharpness_over.png");
-}
-
-.ya-animation-btn {
-  cursor: pointer;
-  width: 65px;
-  height: 28px;
-  margin-top: 6px;
-  margin-right: 8px;
-  float: right;
-  background: url("../../../../res/button/animation_first_normal.png");
-}
-.ya-animation-btn:hover {
-  background: url("../../../../res/button/animation_first_over.png");
-}
-
-.ya-rotate-btn {
-  cursor: pointer;
-  width: 26px;
-  height: 26px;
-  margin-top: 8px;
-  margin-right: 8px;
-  float: right;
-  background: url("../../../../res/button/rotate_normal.png");
-}
-.ya-rotate-btn:hover {
-  background: url("../../../../res/button/rotate_over.png");
-}
-.ya-rotate-btn1 {
-  background: url("../../../../res/button/rotate_normal.png");
-}
-.ya-rotate-btn1:hover {
-  background: url("../../../../res/button/rotate_over.png");
-}
-
-.ya-music-btn {
-  cursor: pointer;
-  width: 26px;
-  height: 26px;
-  margin-top: 7px;
-  margin-right: 8px;
-  float: right;
-  background: url("../../../../res/button/music_normal.png");
-}
-.ya-music-btn:hover {
-  background: url("../../../../res/button/music_over.png");
-}
-.ya-music-btn1 {
-  background: url("../../../../res/button/music1_normal.png");
-}
-.ya-music-btn1:hover {
-  background: url("../../../../res/button/music1_over.png");
-}
-
-.ya-bullet-btn {
-  cursor: pointer;
-  width: 20px;
-  height: 18px;
-  margin-top: 12px;
-  margin-right: 8px;
-  float: right;
-  background: url("../../../../res/button/bullet_normal.png");
-}
-.ya-bullet-btn:hover {
-  background: url("../../../../res/button/bullet_over.png");
-}
-.ya-bullet-btn1 {
-  background: url("../../../../res/button/bullet1_normal.png");
-}
-.ya-bullet-btn1:hover {
-  background: url("../../../../res/button/bullet1_over.png");
-} */

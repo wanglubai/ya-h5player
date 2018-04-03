@@ -27,10 +27,19 @@ class ControlbarView extends Sprite {
     this._refreshBtn = null;
     this._rotateBtn = null;
     this._danmakuBtn = null;
+    this._sharpnessBtn = null;
     this._musicBtn = null;
     this._setBtn = null;
     this._model = ConfigModel;
+
+    this._coundDown = null;
+    this._show = true;
     LayerManager.BarLayer.append(this);
+  }
+  moveShow() {
+    this.removeClass('ya-controlbar-view-hidedown');
+    this.addClass('ya-controlbar-view-showtop');
+    this._resetConutDown();
   }
   _dealVo_(vo) {
     if (vo.type == "init") {
@@ -59,11 +68,33 @@ class ControlbarView extends Sprite {
         } else if (btnVo.id == "set") {
           this._setBtn = new SetButton(this);
           this._setBtn.setVo({ type: "init", value: btnVo });
+        } else if (btnVo.id == 'sharpness') {
+          this._sharpnessBtn = new SharpnessButton(this);
+          this._sharpnessBtn.setVo({ type: 'init', value: btnVo });
         }
       }
-      this._addEvent_();
+      this._init();
+    } else if (vo.type == 'sharpnessVos') {
+      if (this._sharpnessBtn) {
+        this._sharpnessBtn.setVo({ 'type': 'sharpnessVos', 'value': vo.value });
+      }
     }
   }
+  _init() {
+    this._addEvent_();
+    this._resetConutDown();
+  }
+  _resetConutDown() {
+    if (this._coundDown) {
+      clearTimeout(this._coundDown);
+      this._coundDown = null;
+    }
+    this._coundDown = setTimeout(() => {
+      this.addClass('ya-controlbar-view-hidedown');
+      this.removeClass('ya-controlbar-view-showtop');
+    }, 5000);
+  }
+
   _addEvent_() {
     if (this._playBtn) {
       this._playBtn.ons(

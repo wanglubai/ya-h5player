@@ -1,25 +1,27 @@
 import ControlbarButton from "../ControlbarButton";
 import SharpnessTips from "./SharpnessTips";
-
+import './SharpnessButtonCss.css'
 class SharpnessButton extends ControlbarButton {
-  constructor() {
+  constructor(container) {
     super();
+    this._type_ = 1;
     this.initHtmlDisplay('<a class="ya-button ya-sharpness-btn"></a>');
-    this._yvo = null;
-    this._tips = null;
+    this._tips_ = new SharpnessTips();
+    container.append(this, this._tips_);
+    this.updateText('ass');
+    this._addEvent_();
   }
   _dealVo_(vo) {
     switch (vo.type) {
       case "init":
-        this._yvo = vo.value["default"];
-        this._init();
+        break;
+      case 'sharpnessVos':
+        this._tips_.setVo({ 'type': 'sharpnessVos', 'value': vo.value });
         break;
     }
   }
-  _init() {
-    this._tips = new SharpnessTips();
-    this.yparent.append(this._tips);
-    this._tips.setVo({ type: "init", vo: this._yvo });
+  updateText(txt) {
+    this.display.text(txt);
   }
 }
 export default SharpnessButton;

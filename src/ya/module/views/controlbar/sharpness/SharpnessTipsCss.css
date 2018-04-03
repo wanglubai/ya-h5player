@@ -1,0 +1,8 @@
+.ya-sharpness-tips{
+    width: 60px;
+    text-align: center;
+    height: auto;
+    border: 1px solid #ff0000;
+    display: none;
+    position: absolute;
+}

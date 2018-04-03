@@ -23,4 +23,6 @@ EventType.UiDensity = "EventType.UiDensity";
 EventType.UiAlpha = "EventType.UiAlpha";
 EventType.UiVisibleFull = "EventType.UiVisibleFull";
 EventType.UiVisibleCar = "EventType.UiVisibleCar";
+
+EventType.MouseMove = "EventType.MouseMove";
 export default EventType;

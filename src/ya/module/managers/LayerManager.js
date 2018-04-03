@@ -1,5 +1,7 @@
 import EventDispatcher from "../../component/EventDispatcher";
 import Sprite from "../../component/Sprite";
+import Dispatcher from "../../component/Dispatcher";
+import EventType from "../../component/EventType";
 
 class LayerManager extends EventDispatcher {
   constructor() {
@@ -25,6 +27,15 @@ class LayerManager extends EventDispatcher {
       this.BarLayer
     );
     this.TipsLayer.$appendTo($('body'));
+    parent.$on("mousemove", this._eventFun.bind(this));
+  }
+  _eventFun(e) {
+    switch (e.type) {
+      case 'mousemove':
+        Dispatcher.emit(EventType.MouseMove);
+        break;
+    }
   }
 }
-export default new LayerManager();
+var manager = new LayerManager();
+export default manager;

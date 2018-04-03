@@ -15,6 +15,9 @@ class ConfigModel extends BaseModel {
     this._animationCar = null;
     this._preNoLogin = null;
     this._controlbarBtnConfig = [];
+
+    this._sharpnessVos = [];
+    this._sharpnessIndex = 0;
   }
 
   init() {
@@ -22,7 +25,7 @@ class ConfigModel extends BaseModel {
     this.initBarStorage();
     this.initControlbarBtn();
   }
-  addEvent() {}
+  addEvent() { }
   initControlbarBtn() {
     var play = { id: "play", default: 0 };
     var music = { id: "music", default: this.volume };
@@ -52,6 +55,18 @@ class ConfigModel extends BaseModel {
       set
     );
   }
+  setSharpnessVosByModel() {
+    var url = 'http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483'
+    this._sharpnessVos.push({ 'index': 0, 'title': '高清', 'status': 0, 'url': url });
+    this._sharpnessVos.push({ 'index': 1, 'title': '标清', 'status':1, 'url': url });
+    this._sharpnessVos.push({ 'index': 2, 'title': '高清', 'status': 0, 'url': url });
+    this._sharpnessVos.push({ 'index': 3, 'title': '蓝光', 'status': 0, 'url': url });
+    this.emit({ 'type': ModelEvent.SharpnessVosByModel, value: this._sharpnessVos });
+  }
+  get sharpnessVos() {
+    return this._sharpnessVos;
+  }
+
   //view call
   setPlayByUi() {
     this.emit(ModelEvent.PlayByUi);

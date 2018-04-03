@@ -22,6 +22,10 @@ class Player extends Sprite {
     LayerManager.init(this);
     SingleController.init();
     Dispatcher.emit(EventType.InnerInit);
+    this.startModel();
+  }
+  startModel() {
+    this._model.setSharpnessVosByModel();
   }
   _addEvent_() {
     this._model.ons(
