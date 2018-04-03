@@ -11,9 +11,9 @@ class SelecteI extends Sprite {
   }
   setSelectedState(val) {
     this._status_ = val;
-    this._updateView_();
+    this._updateStateView_();
   }
-  _updateView_() {}
+  _updateStateView_() {}
 
   getSelectedState() {
     return this._status_;

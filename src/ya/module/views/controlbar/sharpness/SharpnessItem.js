@@ -18,7 +18,11 @@ class SharpnessItem extends SelecteI {
         this._index = vo.value.index;
         this._title = vo.value.title;
         this._status_ = vo.value.status;
-        this._updateView_();
+        this.display.text(this._title);
+        if (this._status_ == 1) {
+          this._group_.setSelected(this, 1);
+        }
+        this._updateStateView_();
         break;
     }
   }
@@ -32,8 +36,7 @@ class SharpnessItem extends SelecteI {
         break;
     }
   }
-  _updateView_() {
-    this.display.text(this._title);
+  _updateStateView_() {
     if (this._status_ == 0) {
       this.addClass("sharpness-item-statu0");
       this.removeClass("sharpness-item-statu1");
@@ -41,6 +44,9 @@ class SharpnessItem extends SelecteI {
       this.addClass("sharpness-item-statu1");
       this.removeClass("sharpness-item-statu0");
     }
+  }
+  get vo() {
+    return { 'index': this._index, 'title': this._title }
   }
 }
 export default SharpnessItem;

@@ -18,6 +18,7 @@ class SharpnessTips extends CountTips {
   }
   updateViewByVos(vos) {
     this._group = new SelecteGroup();
+    this._group.ons(SelecteGroup.Change, this._eventFun.bind(this));
     var item;
     for (var i in vos) {
       item = new SharpnessItem();
@@ -32,5 +33,16 @@ class SharpnessTips extends CountTips {
   setSelectedIndex(value) {
     this._group.setSelectedByIndex(value);
   }
+  _eventFun(e) {
+    switch (e.type) {
+      case SelecteGroup.Change:
+        this._tipsChange(e.value.vo);
+        break;
+    }
+  }
+  _tipsChange(vo) {
+    this.emit({ 'type': SharpnessTips.Change, 'value':vo});
+  }
 }
+SharpnessTips.Change = 'SharpnessTips.Change';
 export default SharpnessTips;

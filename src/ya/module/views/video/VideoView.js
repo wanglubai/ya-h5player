@@ -20,10 +20,10 @@ class VideoView extends EventDispatcher {
       BaseVideo.VideoLoadState,
       BaseVideo.VideoPlayState,
       BaseVideo.VideoErrorState,
-      this.eventFun.bind(this)
+      this._eventFun.bind(this)
     );
   }
-  eventFun(e) {
+  _eventFun(e) {
     switch (e.type) {
       case BaseVideo.VideoLoadState:
         this.showLoad();
@@ -45,6 +45,10 @@ class VideoView extends EventDispatcher {
         break;
       case "volume":
         this.volume(vo.value);
+        break;
+      case 'sharpness':
+        this.showLoad();
+        this.sharpness(vo.value);
         break;
     }
   }
@@ -90,6 +94,9 @@ class VideoView extends EventDispatcher {
   }
   volume(val) {
     this._video.setCacheVo({ type: "volume", value: val });
+  }
+  sharpness(vo) {
+    this._video.setCacheVo({ type: "sharpness", value: vo });
   }
 }
 VideoView.VideoErrorState = "VideoView.VideoErrorState";

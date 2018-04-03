@@ -12,7 +12,7 @@ ModelEvent.DanmakuTypeByUi = "ModelEvent.DanmakuTypeByUi";
 ModelEvent.DanmakuDensityByUi = "ModelEvent.DanmakuDensityByUi";
 ModelEvent.AnimationVisibleByUi = "ModelEvent.AnimationVisibleByUi";
 ModelEvent.AnimationCarByUi = "ModelEvent.AnimationCarByUi";
-ModelEvent.SharpnessIndexByUi = 'ModelEvent.SharpnessIndexByUi';
+ModelEvent.SharpnessVoChangeByUi = 'ModelEvent.SharpnessVoChangeByUi';
 
-ModelEvent.SharpnessVosByModel = 'ModelEvent.SharpnessVosByModel';
+ModelEvent.SharpnessVosByApi = 'ModelEvent.SharpnessVosByApi';
 export default ModelEvent;

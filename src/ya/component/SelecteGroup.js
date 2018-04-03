@@ -21,11 +21,11 @@ class SelecteGroup extends EventDispatcher {
       }
     }
   }
-  setSelectedByIndex(index) {
+  setSelectedByIndex(index, emit) {
     var item = this._arr[index];
-    item && this.setSelected(item);
+    item && this.setSelected(item, emit);
   }
-  setSelected(I) {
+  setSelected(I, emit) {
     if (this._cur) {
       if (this._cur == I) {
         return;
@@ -35,8 +35,12 @@ class SelecteGroup extends EventDispatcher {
     }
     this._cur = I;
     this._cur.setSelectedState(1);
-    this.emit({ type: SelecteGroup.Chang, value: this._cur });
+    if (emit) {
+
+    } else {
+      this.emit({ type: SelecteGroup.Change, value: this._cur });
+    }
   }
 }
-SelecteGroup.Chang = "SelecteGroup.Chang";
+SelecteGroup.Change = "SelecteGroup.Change";
 export default SelecteGroup;

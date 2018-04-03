@@ -129,6 +129,9 @@ class ControlbarView extends Sprite {
     if (this._setBtn) {
       this._setBtn.ons(SetButton.Change, this._eventFun.bind(this));
     }
+    if (this._sharpnessBtn) {
+      this._sharpnessBtn.ons(SharpnessButton.Change, this._eventFun.bind(this));
+    }
   }
   _eventFun(e) {
     switch (e.type) {
@@ -167,6 +170,9 @@ class ControlbarView extends Sprite {
         } else if (e.action == "car") {
           this._model.setAnimationCarByUi(e.value);
         }
+        break;
+      case SharpnessButton.Change:
+        this._model.setSharpnessByUi(e.value);
         break;
     }
   }

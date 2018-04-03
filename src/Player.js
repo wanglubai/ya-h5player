@@ -25,7 +25,7 @@ class Player extends Sprite {
     this.startModel();
   }
   startModel() {
-    this._model.setSharpnessVosByModel();
+    this._model.setSharpnessVosByAPi();
   }
   _addEvent_() {
     this._model.ons(

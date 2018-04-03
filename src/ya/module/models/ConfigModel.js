@@ -18,6 +18,7 @@ class ConfigModel extends BaseModel {
 
     this._sharpnessVos = [];
     this._sharpnessIndex = 0;
+    this._curSharpnessVo = null;
   }
 
   init() {
@@ -55,19 +56,32 @@ class ConfigModel extends BaseModel {
       set
     );
   }
-  setSharpnessVosByModel() {
+  setSharpnessVosByAPi() {
     var url = 'http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483'
-    this._sharpnessVos.push({ 'index': 0, 'title': '高清', 'status': 0, 'url': url });
-    this._sharpnessVos.push({ 'index': 1, 'title': '标清', 'status':1, 'url': url });
+    this._sharpnessVos.push({ 'index': 0, 'title': '高清', 'status': 1, 'url': url });
+    this._sharpnessVos.push({ 'index': 1, 'title': '标清', 'status': 0, 'url': url });
     this._sharpnessVos.push({ 'index': 2, 'title': '高清', 'status': 0, 'url': url });
     this._sharpnessVos.push({ 'index': 3, 'title': '蓝光', 'status': 0, 'url': url });
-    this.emit({ 'type': ModelEvent.SharpnessVosByModel, value: this._sharpnessVos });
+    this._curSharpnessVo = this._sharpnessVos[0];
+    this.emit({ 'type': ModelEvent.SharpnessVosByApi, value: this._sharpnessVos });
   }
   get sharpnessVos() {
     return this._sharpnessVos;
   }
-
+  get curSharpnessVo() {
+    return this._curSharpnessVo;
+  }
   //view call
+  setSharpnessByUi(vo_) {
+    var vo = null;
+    for (var i in this._sharpnessVos) {
+      vo = this._sharpnessVos[i];
+      if (vo.index == vo_.index) {
+        this._curSharpnessVo = vo;
+      }
+    }
+    this.emit(ModelEvent.SharpnessVoChangeByUi);
+  }
   setPlayByUi() {
     this.emit(ModelEvent.PlayByUi);
   }

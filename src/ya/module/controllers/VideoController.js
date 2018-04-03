@@ -28,6 +28,8 @@ class VideoController extends BaseController {
       ModelEvent.PlayByUi,
       ModelEvent.PauseByUi,
       ModelEvent.ChangeVolumeByUi,
+      ModelEvent.SharpnessVoChangeByUi,
+      ModelEvent.SharpnessVosByApi,
       this._eventFun.bind(this)
     );
   }
@@ -44,6 +46,10 @@ class VideoController extends BaseController {
         break;
       case ModelEvent.ChangeVolumeByUi:
         this._changeVolume();
+        break;
+      case ModelEvent.SharpnessVoChangeByUi:
+      case ModelEvent.SharpnessVosByApi:
+        this._changeSharpness();
         break;
     }
   }
@@ -77,9 +83,11 @@ class VideoController extends BaseController {
     if (this._videoView == null) {
       this._videoView = new VideoView();
       this._videoView.setVo({ type: "init", volume: this._model.volume });
-      this._videoView.playUrl(
-        "http://180.153.100.182/flvtx.plu.cn/onlive/ffe20d67d3684b678054b1e48cf6739c.flv?txSecret=626678fa70d7721e26eaa0d2277a22f3&txTime=5aaa77e3&dispatch_from=ztc10.236.21.177&utime=1521120678483"
-      );
+    }
+  }
+  _changeSharpness() {
+    if (this._videoView) {
+      this._videoView.setVo({ 'type': 'sharpness', value: this._model.curSharpnessVo });
     }
   }
 }

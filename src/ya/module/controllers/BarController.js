@@ -18,14 +18,14 @@ class BarController extends BaseController {
   }
   _addEvent_() {
     Dispatcher.ons(EventType.InnerInit, EventType.MouseMove, this.eventFun.bind(this));
-    this._model.ons(ModelEvent.SharpnessVosByModel, this.eventFun.bind(this));
+    this._model.ons(ModelEvent.SharpnessVosByApi, this.eventFun.bind(this));
   }
   eventFun(e) {
     switch (e.type) {
       case EventType.InnerInit:
         this._initControlbarView();
         break;
-      case ModelEvent.SharpnessVosByModel:
+      case ModelEvent.SharpnessVosByApi:
         this._updateSharpnessVos(e.value);
         break;
       case EventType.MouseMove:

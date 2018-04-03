@@ -20,8 +20,23 @@ class SharpnessButton extends ControlbarButton {
         break;
     }
   }
+  _addEvent_() {
+    super._addEvent_();
+    this._tips_.ons(SharpnessTips.Change, this._eventFun.bind(this));
+  }
+  _eventFun(e) {
+    switch (e.type) {
+      case SharpnessTips.Change:
+        this._tipsChange(e.value);
+        break;
+    }
+  }
+  _tipsChange(vo) {
+    this.emit({ 'type': SharpnessButton.Change, 'value': vo })
+  }
   updateText(txt) {
     this.display.text(txt);
   }
 }
+SharpnessButton.Change = 'SharpnessButton.Change';
 export default SharpnessButton;
