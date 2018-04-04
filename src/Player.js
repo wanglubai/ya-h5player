@@ -8,16 +8,22 @@ import LayerManager from "./ya/module/managers/LayerManager";
 import ConfigModel from "./ya/module/models/ConfigModel";
 import ModelEvent from "./ya/module/models/ModelEvent";
 import flvjs from "./libs/flv/flv";
+import HttpManager from "./ya/module/managers/HttpManager";
+import JsManager from "./ya/module/managers/JsManager";
 
 class Player extends Sprite {
   constructor(vo) {
     super();
-    this._vo = vo;
     this._model = ConfigModel;
+    this._model.param = vo;
+
     this.initDivDisplay("player");
-    this.appendToById(this._vo["container"]);
+    this.appendToById(vo["container"]);
+
     this.init();
     this._addEvent_();
+
+    HttpManager.toServerGetPlayerVoByRoomId(531250,function(vo){console.log(vo)});
   }
   init() {
     LayerManager.init(this);

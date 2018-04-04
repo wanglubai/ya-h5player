@@ -1,10 +1,10 @@
 import BaseModel from "./BaseModel";
 import ModelEvent from "./ModelEvent";
+import HttpManager from "../managers/HttpManager";
 
 class ConfigModel extends BaseModel {
   constructor() {
     super();
-    this.platform = "longzhu";
     this._giftVisible = null;
     this._volume = null;
     this._danmakuAlpha = null;
@@ -19,6 +19,8 @@ class ConfigModel extends BaseModel {
     this._sharpnessVos = [];
     this._sharpnessIndex = 0;
     this._curSharpnessVo = null;
+
+    this._param = null;
   }
 
   init() {
@@ -76,6 +78,7 @@ class ConfigModel extends BaseModel {
   get curSharpnessVo() {
     return this._curSharpnessVo;
   }
+
   //view call
   setSharpnessByUi(vo_) {
     var vo = null;
@@ -265,6 +268,13 @@ class ConfigModel extends BaseModel {
   }
   get preNoLogin() {
     return this._preNoLogin;
+  }
+
+  set param(vo) {
+    this._param = vo;
+  }
+  get param() {
+    return this._param;
   }
 }
 export default new ConfigModel();
