@@ -6,7 +6,6 @@ class Sprite extends EventDispatcher {
     this._display = null;
     this._width = null;
     this._height = null;
-    this._yparent = null;
   }
 
   initDisplay(display) {
@@ -50,17 +49,14 @@ class Sprite extends EventDispatcher {
   $append() {
     for (var i = 0; i < arguments.length; i++) {
       this._display.append(arguments[i]);
-      arguments[i].yparent = this;
     }
   }
   $appendTo() {
     this._display.appendTo(arguments[0]);
-    this._yparent = arguments[0];
   }
   append() {
     for (var i = 0; i < arguments.length; i++) {
       this._display.append(arguments[i].display);
-      arguments[i].yparent = this;
     }
   }
   get offset_left() {
@@ -71,7 +67,6 @@ class Sprite extends EventDispatcher {
   }
   appendTo(p) {
     this._display.appendTo(p.display);
-    this._yparent = p;
   }
   appendToById(id) {
     this._display.appendTo($("#" + id));
@@ -88,16 +83,12 @@ class Sprite extends EventDispatcher {
   $text() {
     this._display.text(arguments[0]);
   }
-  resizeFresh() {}
+  $position() {
+    return this._display.position();
+  }
+  resizeFresh() { }
   destory() {
-    this.removeEvent();
     super.destory();
-  }
-  get yparent() {
-    return this._yparent;
-  }
-  set yparent(yparent) {
-    this._yparent = yparent;
   }
   get cacheWidth() {
     if (!this._width) {
@@ -110,6 +101,9 @@ class Sprite extends EventDispatcher {
       this._height = this._display.height();
     }
     return this._height;
+  }
+  get width() {
+    return this.display.width();
   }
   get display() {
     return this._display;

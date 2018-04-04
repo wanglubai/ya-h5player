@@ -27,10 +27,14 @@ class DanmakuController extends BaseController {
   _initDanmakuView() {
     if (this._danmakuView == null) {
       this._danmakuView = new DanmakuView();
+      this._danmakuView.setVo({ 'type': 'init' })
     }
-    setInterval(this.addVo.bind(),1000/24)
+    // this._danmakuView.setVo({ 'type': 'add', 'value': { 'child': 'aasaaaaaaaaa' } })
+    // this._danmakuView.setVo({ 'type': 'add', 'value': { 'child': 'aasaaaaaaaaa' } })
+    setInterval(this.addVo.bind(this), 100 )
   }
-  addVo(){
+  addVo() {
+    this._danmakuView.setVo({ 'type': 'add', 'value': { 'child': 'aasaaaaaaaaa' } })
   }
 }
 export default new DanmakuController();

@@ -52,7 +52,7 @@ class EventDispatcher extends Base {
   }
 
   destroy() {
-    super.destroy();
+    // super.destroy();
   }
 }
 
