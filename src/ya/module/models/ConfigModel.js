@@ -150,12 +150,12 @@ class ConfigModel extends BaseModel {
     if (this.localStorageHas("_danmakuType")) {
       this._danmakuType = this.getLocalStorage("_danmakuType");
     } else {
-      this.danmakuType = 0;
+      this.danmakuType = 2;
     }
     if (this.localStorageHas("_danmakuVisible")) {
       this._danmakuVisible = this.getLocalStorage("_danmakuVisible");
     } else {
-      this.danmakuVisible = 1;
+      this.danmakuVisible = 2;
     }
     if (this.localStorageHas("_preNoLogin")) {
       this._preNoLogin = this.getLocalStorage("_preNoLogin");

@@ -10,7 +10,7 @@ class DanmakuView extends Sprite {
     this._lineHeight = 40;
     this._voList = [];
     this._itemList = [];
-    this._layerMax = 6;
+    this._layerMax = 1;
     this._startIndex = 0;
     this._endIndex = 0;
     this._maxNum = -1;
@@ -22,15 +22,56 @@ class DanmakuView extends Sprite {
     this.initDivDisplay("danmaku-view");
     LayerManager.DanmakuLayer.append(this);
   }
+  _setDensity(index) {
+    if (index == 0) {
+      this._layerMax = 3;
+    } else if (index == 1) {
+      this._layerMax = 2;
+    } else if (index == 2) {
+      this._layerMax = 1;
+    }
+  }
+  _setType(type) {
+    if (type == 0) {
+      this._endRatio = 1;
+    } else if (type == 1) {
+      this._endRatio = 0.5;
+    } else if (type == 2) {
+      this._endRatio = 0.25;
+    }
+  }
+  _setAlpha(type) {
+    if(type==0){
+      this.css('opacity',0);
+    }else if(type==1){
+      this.css('opacity',0.5);
+    }else if(type==2){
+      this.css('opacity',0.8);
+    }else if(type==3){
+      this.css('opacity',1);
+    }
+  }
 
   _dealVo_(vo) {
     switch (vo.type) {
       case 'init':
         this._isInit = true;
+        this._setDensity(vo.value['density']);
+        this._setType(vo.value['type']);
+        this._setAlpha(vo.value['alpha']);
         this._init();
         break;
       case 'add':
         this._add(vo.value);
+        break;
+      case 'density':
+        this._setDensity(vo.value);
+        break;
+      case 'type':
+        this._setType(vo.value);
+        break;
+      case 'alpha':
+        this._setAlpha(vo.value);
         break;
     }
   }
@@ -65,7 +106,7 @@ class DanmakuView extends Sprite {
 
   updateLayer(index) {
     if (this._voList.length == 0) return;
-    if (index > this._layerIndex) return;
+    if (index > this._layerMax - 1) return;
     var curItem;
     var item;
     var vo;
@@ -99,7 +140,7 @@ class DanmakuView extends Sprite {
         }
       }
     }
-    if (nextLayer && index < this._layerIndex) {
+    if (nextLayer && index < this._layerMax - 1) {
       this.updateLayer(index + 1);
     }
   }
